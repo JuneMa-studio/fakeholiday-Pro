@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<script>
+			function getvalue(name){
+				const url_string = window.location.href;
+				const url = new URL(url_string);
+				return url.searchParams.get(name);
+			}
+			var myname = getvalue('myname');
+			var  wanna = getvalue('wanna');
+			var  name1 = getvalue('name1');
+			var  passtime1 = getvalue('passtime1');
+			var  bb1 = getvalue('bb1');
+		</script>
+		<style>
+			*{
+				margin: 0px;
+				font-size: 15px;
+			}
+			.list {
+				position: relative;
+				padding: 8px;
+				margin: 0px 15px;
+				overflow: hidden;
+			}
+			.list .line {
+				position: absolute;
+				width: 2px;
+				height: 30%;
+				background: #eee;
+				top: 30px;
+				left: 10px;
+			}
+			.list .item {
+				margin-left: 15px;
+				padding: 10px 0px;
+				color: #888;
+				position: relative;
+			}
+			.list .circle {
+				width: 15px;
+				height: 15px;
+				background-color: #fff;
+				border: 1px solid rgb(4, 200, 118);
+				border-radius: 50%;
+				position: absolute;
+				top: 10px;
+				left: -21px;
+			}
+			.list .circle1 {
+				border: 1px solid rgb(32, 133, 241);
+			}
+			.list .time{
+				width: 30%;
+			}
+			#bb{
+				width: 100%-10px;
+				height: 40px;
+				background-color: rgb(246, 247, 249);
+				border: 2px solid rgb(214, 221, 229);
+				border-radius: 8px ;
+				line-height: 40px;
+				padding-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h4 style="margin: 6px 14px;font-size: 18px;" >审批状态</h4>
+		<div class="list">
+			<div class="line"></div>
+			<div class="item">
+				<div class="circle circle1"></div>
+				<div class="text">
+					<table style="width: 100%;border: 0px;" >
+						<tr>
+							<td><p class="text" id="myname" ></p></td>
+							<td class="time" ><p id="wanna" ></p></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="item">
+				<div class="circle"></div>
+				<div class="text">
+					<table style="width: 100%;border: 0px;" >
+						<tr>
+							<td><p class="text" id="name">--</p></td>
+							<td class="time" ><p id="passtime" ></p></td>
+						</tr>
+						<tr>
+							<td colspan="2"><p id="bb">审批意见：同意</p></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			function dateFormat(fmt,date){
+				var o = {
+					"M+" : date.getMonth()+1,
+					"d+" : date.getDate(),
+					"h+" : date.getHours(),
+					"m+" : date.getMinutes(),
+					"s+" : date.getSeconds(),
+				};
+				if(/(y+)/.test(fmt)){
+					fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+				}
+				for(var k in o)
+					if(new RegExp("("+ k +")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+				return fmt;
+			}
+			function getvalue(name){
+				const url_string = window.location.href;
+				const url = new URL(url_string);
+				return url.searchParams.get(name);
+			}
+			var bgtmp = getvalue("bg");
+			var sqtmp = new Date(bgtmp - 6000000);
+			var g1tmp = new Date(bgtmp - 5530000);
+			var g2tmp = new Date(bgtmp - 4640000);
+			var g3tmp = new Date(bgtmp - 3790000);
+			var g4tmp = new Date(bgtmp - 1840000);
+			var sqdate = dateFormat("MM-dd hh:mm",sqtmp);
+			var g1date = dateFormat("MM-dd hh:mm",g1tmp);
+			var g2date = dateFormat("MM-dd hh:mm",g2tmp);
+			var g3date = dateFormat("MM-dd hh:mm",g3tmp);
+			var g4date = dateFormat("MM-dd hh:mm",g4tmp);
+			
+			var truename = localStorage.getItem("truename");
+			var g1 = localStorage.getItem("g1");
+			console.log(g1);
+			var g2 = localStorage.getItem("g2");
+			console.log(g2);
+			var g3 = localStorage.getItem("g3");
+			console.log(g3);
+			var g4 = localStorage.getItem("g4");
+			console.log(g4);
+			document.getElementById('wanna').innerHTML = sqdate;
+			document.getElementById('myname').innerHTML = truename+' - 发起申请';
+			document.getElementById('name').innerHTML = "一级："+g1+" - 审批 <a style='color: rgb(44, 140, 240);'>通过</a>";
+			document.getElementById('passtime').innerHTML = g1date;
+		</script>
+	</body>
+</html>

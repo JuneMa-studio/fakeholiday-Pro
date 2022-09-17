@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#iCenter{
+				width:300px; 
+				height: 280px; 
+				border:1px #000 solid;
+				margin:20px auto;
+			}
+		</style>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=a8e3f1d526511281bac2edf977a6ca03"></script>
+	</head>
+	<body>
+		<div style="width: 100%;height: 100%;" >
+			<h2 style="font-size: 40px;line-height: 100px;margin-left: 20px;">设置</h2>
+			<ul>
+				<li><a onclick="clean()">清空数据</a></li>
+				<li><a onclick="junp()" target=_parent>修改个人信息</a></li>
+				<li><a href="login.html" target=_parent>测试链接</a></li>
+			</ul>
+			<p>本软件因为不联网，所以无法实时检查更新，请密切关注此软件的GitHub开源项目进展，将在未来版本中加入应用内检查更新</p>
+			<p>此版本主页底部菜单按钮不可以单个连续点击，并且每次重新打开页面要点击按钮时需要点击两次，然后切换其他按钮才会正常，切换图标的算法后续版本会优化。</p>
+		</div>
+		<script>
+			console.log('学校：'+localStorage.getItem("school"));
+			console.log('昵称：'+localStorage.getItem("username"));
+			console.log('姓名：'+localStorage.getItem("truename"));
+			console.log('学号：'+localStorage.getItem("studentid"));
+			console.log('性别：'+localStorage.getItem("sex"));
+			console.log('民族：'+localStorage.getItem("ethnic"));
+			console.log('年级：'+localStorage.getItem("grade"));
+			console.log('学院：'+localStorage.getItem("faculties"));
+			console.log('专业：'+localStorage.getItem("major"));
+			console.log('班级：'+localStorage.getItem("banji"));
+			console.log('宿舍：'+localStorage.getItem("dormitory"));
+			function clean(){
+				localStorage.clear();
+			}
+			function junp(){
+				location.href = "login.html"
+			}
+		</script>
+	</body>
+</html>
