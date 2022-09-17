@@ -130,7 +130,7 @@
 			<div class="name" >
 				<p>设置反馈</p>
 			</div>
-			<div class="t" >
+			<div class="t" onclick="gotoabout()">
 				<div class="xiangmu"><p>帮助反馈</p></div>
 				<div class="back"></div>
 			</div>
@@ -148,6 +148,9 @@
 			document.getElementById("erweima");
 			erweima.onclick = function(){
 				alert("点击了二维码")
+			}
+			function gotoabout(){
+				top.location.href = "about.html";
 			}
 		</script>
 	</body>
