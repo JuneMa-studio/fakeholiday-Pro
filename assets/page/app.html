@@ -2,12 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<title></title>
 		<style>
 			*{
 				margin: 0px;
 				font-size: 15px;
+			}
+			body{
+				width: 100%;
 			}
 			table tr{
 				height: 1rem;
@@ -70,8 +73,9 @@
 			}
 			#blue{
 				width: auto;
-				height: 100%;
+				height: 40px;
 				text-align: center;
+				line-height: 40px;
 				font-weight: 800;
 				color: #3399fe;
 				background-color: #ebf5ff;
@@ -149,44 +153,122 @@
 				padding-left: 10px;
 			}
 			#qr_side{
-				width: 100%;
-				height: auto;
-				text-align: center;
+				background-color: #dff3f1;
+				background-size: 100% 100%;
 				position: fixed;
-				top: 35%;
+				top: 110px;
+				bottom: 0px;
+				width: 100%;
 				display: none;
 			}
-			#qr_code{
-				width: 50%;
+			#bkground table{
+				width: 100%;
+				height: 500px;
+				text-align: center;
+			}
+			.frt{
+				width: 50px;
+				display: blocks;
+			}
+			#qr_area{
 				height: auto;
+				margin: 0px 0px;
+				/* background-color: #3399fe; */
+				background-image: url(../img/动态防伪.png);
+				background-size: 100% 120%;
+				border-radius: 20px;
+			}
+			#sptgimg{
+				height: 35px;
+				margin: 0px 5px;
+			}
+			#spytg p{
+				height: 40px;
+				line-height: 40px;
+				color: #fff;
+				font-size: 20px;
+				padding-bottom: 2px;
+			}
+			#zzxjz p{
+				margin-top: 10px;
+				color: #fff;
+				font-size: 38px;
+				margin-bottom: 10px;
+			}
+			#qr_self{
 				background-color: #fff;
-				border-radius: 15px;
+				padding: 5px 5px;
+				margin: 10px 15px;
+				border-radius: 10px;
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			}
-			#qr_code div{
-				margin: 10px;
+			#qr_self img{
+				width: 180px;
 			}
-			#ps p{
-				margin-top: 10px;
-				font-size: 15px;
-				font-weight: 800;
-				color: #6f6f6f;
-			}
-			#git_qr{
-				width: 170px;
-				height: 170px;
+			#qr_self p{
+				font-size: 13px;
+				color: #697078;
+				font-weight: 500;
+				line-height: 20px;
 			}
 			#nowtimes{
-				margin-top: 20px;
-				margin-left: 15%;
-				margin-right: 15%;
-				height: 35px;
-				line-height: 35px;
-				background-color: #3399fe;
-				font-weight: 1000;
-				font-size: 16px;
+				font-size: 20px;
 				color: #fff;
-				border-radius: 20px;
+				font-weight: 500;
+				line-height: 30px;
+				padding-bottom: 10px;
+			}
+			#info{
+				background-color: rgba(245, 245, 245, 70%);
+				position: fixed;
+				top: 12.5rem;
+				right: 15%;
+				padding: 2px 5px;
+				border-radius: 10px;
+			}
+			#tapinfo{
+				position: fixed;
+				background-color: rgba(0, 0, 0, 0.5);
+				top: 50px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				padding: 180px 60px;
+				display: none;
+			}
+			#infocard{
+				background-color: #fff;
+				padding: 30px 15px;
+				border-radius: 10px;
+				position: relative;
+			}
+			.close::before,.close::after {
+			    position: absolute;
+				top: 15px;
+				right: 30px;
+			    content: ' ';
+			    background-color: #000;
+			    width: 1px;
+			    height: 20px;
+			}
+			.close::before {
+			    transform: rotate(45deg);
+			}
+			.close::after {
+			    transform: rotate(-45deg);
+			}
+			#infocard table{
+				text-align: center;
+			}
+			#infocard table tr td{
+				text-align: center;
+			}
+			#infocard menu{
+				position: relative;
+				left: -25px;
+			}
+			#infocard menu li::marker{
+				font-size: 3px;
 			}
 		</style>
 	</head>
@@ -208,8 +290,9 @@
 			<div id="selectline"></div>
 			<img style="width: 100%;height: 22px;" src="../img/tip2.png"/>
 		</div>
-		<iframe id="rollpart" src="roll_rq.html"></iframe>
 		<div id="main">
+			<iframe id="rollpart" src="roll_rq.html"></iframe>
+			<div onclick="showinfocard()" style="position: fixed;top: 120px;right: 10px;color: #fff;">个人信息 ></div>
 			<table id="area1" >
 				<tr>
 					<td id="q">请假类型：</td>
@@ -236,7 +319,7 @@
 					<tr>
 						<td id="q" style="width: 28%;" >开始时间：</td>
 						<td><p id="bgtime" ></p></td>
-						<td rowspan="2" id="blue"></td>
+						<td rowspan="2"><div id="blue"></div></td>
 					</tr>
 					<tr>
 						<td id="q" >结束时间：</td>
@@ -268,7 +351,7 @@
 					</tr>
 					<tr>
 						<td id="q" >宿舍信息：</td>
-						<td class="info" colspan="2"><p id="dormitory">-</p></td>
+						<td class="info" colspan="2"><p>-</p></td>
 					</tr>
 					<tr>
 						<td class="info" colspan="3"><p style="color:rgb(247, 154, 14);">本人承诺填写的信息真实有效，并对本次提交请假申请的信息真实性负责。</p></td>
@@ -361,23 +444,110 @@
 			</table>
 		</div>
 		<div id="qr_side">
-			<table>
-				<tr>
-					<td style="width: 25%;"></td>
-					<td id="qr_code">
-						<div>
-							<img id="git_qr" src="../img/git_qr.png">
-						</div>
-					</td>
-					<td  style="width: 25%;"></td>
-				</tr>
-				<tr>
-					<td id="ps" colspan="3"><p>请用辅导猫扫码核验请假单真伪</p></td>
-				</tr>
-			</table>
-			<div id="nowtimes">当前时间</div>
+			<div id="bkground">
+				<table>
+					<tr style="height: 30px;">
+						<td style="width: 15%;"><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td style="width: 15%;"><img class="frt" src="../img/frt_1.png"/></td>
+					</tr>
+					<tr style="height: 30px;">
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+					</tr>
+					<tr style="height: 60px;">
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td colspan="3" rowspan="3">
+							<div id="info" onclick="showinfocard()">个人信息 ></div>
+							<div id="qr_area">
+								<div id="spytg"><p><img src="../img/duigou.png" id="sptgimg" />审批已通过</p></div>
+								<div id="zzxjz"><p id="p">正在休假中</p></div>
+								<div id="qr_self">
+									<img src="../img/git_qr.png">
+									<p>请使用辅导猫扫码核验请假单真伪</p>
+								</div>
+								<div id="nowtimes"></div>
+							</div>
+						</td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+					</tr>
+					<tr style="height: 60px;">
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+					</tr>
+					<tr style="height: 60px;">
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+						<td></td>
+						<td><img class="frt" src="../img/frt_1.png"/></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="tapinfo">
+			<div id="infocard">
+				<table style="width: 100%;">
+					<tr>
+						<td style="width: 30%;"></td>
+						<td>个人信息</td>
+						<td style="width: 30%;"><div class="close" onclick="closecard()"></div></td>
+					</tr>
+				</table>
+				<menu>
+					<li>照片：-</li>
+					<li id="truename"></li>
+					<li id="studentid"></li>
+					<li id="sex"></li>
+					<li id="ethnic"></li>
+					<li id="grade"></li>
+					<li id="faculties"></li>
+					<li id="major"></li>
+					<li id="banji"></li>
+					<li>宿舍：-</li>
+				</menu>
+			</div>
 		</div>
 		<script>
+			document.getElementById("truename").innerHTML = "姓名："+localStorage.getItem("truename");
+			document.getElementById("studentid").innerHTML = "学号："+localStorage.getItem("studentid");
+			document.getElementById("sex").innerHTML = "性别："+localStorage.getItem("sex");
+			document.getElementById("ethnic").innerHTML = "民族："+localStorage.getItem("ethnic");
+			document.getElementById("grade").innerHTML = "年级："+localStorage.getItem("grade");
+			document.getElementById("faculties").innerHTML = "学院："+localStorage.getItem("faculties");
+			document.getElementById("major").innerHTML = "专业："+localStorage.getItem("major");
+			document.getElementById("banji").innerHTML = "班级："+localStorage.getItem("banji");
+			function randomNum(minNum,maxNum){ 
+			    switch(arguments.length){ 
+			        case 1: 
+			            return parseInt(Math.random()*minNum+1,10); 
+			        break; 
+			        case 2: 
+			            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+			        break; 
+			            default: 
+			                return 0; 
+			            break; 
+			    } 
+			}
+			var frtnum = randomNum(0,15);
+			console.log(frtnum);
 			function getvalue(name){
 				const url_string = window.location.href;
 				const url = new URL(url_string);
@@ -392,21 +562,38 @@
 			var bgtmp = Date.parse(data.bgdate+" "+data.bgtime);//格式化开始时间
 			var sqtmp = new Date(bgtmp - 6000000);//伪造并文本化申请日期
 			var endtmp = Date.parse(data.enddate+" "+data.endtime);//格式化结束时间
-			var end_bg = new Date(endtmp-bgtmp)/1000/60/60;//文本化请假时长
-			if(end_bg > 24){//大于一天则转为*天*小时，小于一天，直接输出*小时
-				var days = parseInt(end_bg / 24);
-				var hours = end_bg % 24;
-				var sjc_str = days+"天"+hours+"小时";
-			}else{
-				var sjc_str = end_bg+"小时";
+			var end_bg = new Date(endtmp-bgtmp)/1000/60;//文本化请假时长
+			console.log(end_bg);
+			var D = parseInt(end_bg/1440);
+			console.log(D);
+			var H = parseInt((end_bg%1440)/60);
+			console.log(H);
+			var M = parseInt((end_bg%1440)%60);
+			console.log(M);
+			if(D!=0 && H!=0 && M!=0){
+				var sjc_str = D+"天"+H+"小时"+M+"分钟";
+			}else if(D==0 && H!=0 && M!=0){
+				var sjc_str = H+"小时"+M+"分钟";
+			}else if(D==0 && H==0 && M!=0){
+				var sjc_str = M+"分钟";
+			}else if(D!=0 && H==0 && M==0){
+				var sjc_str = D+"天";
+			}else if(D!=0 && H!=0 && M==0){
+				var sjc_str = D+"天"+H+"小时";
+			}else if(D!=0 && H==0 && M!=0){
+				var sjc_str = D+"天"+M+"分钟";
+			}else if(D==0 && H!=0 && M==0){
+				var sjc_str = H+"小时";
 			}
-			
+			console.log(sjc_str);
 			var flag;
 			var now = Date.parse(new Date());
 			if(now > endtmp){
 				document.getElementById("rollpart").src = "roll_rq.html?flag="+0;
+				document.getElementById("qr_area").style.backgroundImage = "url(../img/动态防伪_ed.png)"
 			}else{
 				document.getElementById("rollpart").src = "roll_rq.html?flag="+1;
+				document.getElementById("qr_area").style.backgroundImage = "url(../img/动态防伪.png)"
 			}
 			document.getElementById("timeline").src = "../page/timeline1.html?bg="+bgtmp;
 			document.getElementById("end_bg").innerHTML = data.bgdate.substring(6)+" "+
@@ -521,15 +708,22 @@
 				case 3 : line_el.style.height = "65%";item4.style.display = "none";break;
 				case 4 : line_el.style.height = "75%";break;
 			}
-			
+			var frts = document.getElementsByClassName("frt");
+			var mission = frts[frtnum];
 			function gettime(){
 				var ntm = Date.now();//获取当前时间戳（毫秒）
 				var time = new Date(ntm);//毫秒转日期格式
-				var showtime = "当前时间:"+dateFormat("yyyy-MM-dd hh:mm:ss",time);
+				var showtime = dateFormat("yyyy-MM-dd hh:mm:ss",time);
 				document.getElementById('nowtimes').innerHTML = showtime;
+				mission.style.display=(mission.style.display=="none")?"block":"none";
 			}
 			setInterval("gettime()",1000);
-			
+			function showinfocard(){
+				document.getElementById("tapinfo").style.display = "block";
+			}
+			function closecard(){
+				document.getElementById("tapinfo").style.display = "none";
+			}
 		</script>
 	</body>
 </html>

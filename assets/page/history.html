@@ -171,13 +171,24 @@
 					var bgtmp = Date.parse(data.bgdate+" "+data.bgtime);//格式化开始时间
 					var sqtmp = new Date(bgtmp - 6000000);//伪造并文本化申请日期
 					var endtmp = Date.parse(data.enddate+" "+data.endtime);//格式化结束时间
-					var end_bg = new Date(endtmp-bgtmp)/1000/60/60;//文本化请假时长
-					if(end_bg > 24){//大于一天则转为*天*小时，小于一天，直接输出*小时
-						var days = parseInt(end_bg / 24);
-						var hours = end_bg % 24;
-						var sjc_str = "(共"+days+"天"+hours+"小时)";
-					}else{
-						var sjc_str = "(共"+end_bg+"小时)";
+					var end_bg = new Date(endtmp-bgtmp)/1000/60;//文本化请假时长
+					var D = parseInt(end_bg/1440);
+					var H = parseInt((end_bg%1440)/60);
+					var M = parseInt((end_bg%1440)%60);
+					if(D!=0 && H!=0 && M!=0){
+						var sjc_str = "（共"+D+"天"+H+"小时"+M+"分钟）";
+					}else if(D==0 && H!=0 && M!=0){
+						var sjc_str = "（共"+H+"小时"+M+"分钟）";
+					}else if(D==0 && H==0 && M!=0){
+						var sjc_str = "（共"+M+"分钟）";
+					}else if(D!=0 && H==0 && M==0){
+						var sjc_str = "（共"+D+"天）";
+					}else if(D!=0 && H!=0 && M==0){
+						var sjc_str = "（共"+D+"天"+H+"小时）";
+					}else if(D!=0 && H==0 && M!=0){
+						var sjc_str = "（共"+D+"天"+M+"分钟）";
+					}else if(D==0 && H!=0 && M==0){
+						var sjc_str = "（共"+H+"小时）";
 					}
 					var sqdate = dateFormat("MM-dd hh:mm",sqtmp);//申请日期转化为字符串
 					if(i == 0){
