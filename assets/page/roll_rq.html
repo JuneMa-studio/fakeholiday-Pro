@@ -20,11 +20,11 @@
 				}
 			}
 			#imgBgc{
-				height: 115px;
+				height: 100px;
 				width: 100%;
 				background-image: url(../img/动态防伪.png);
 				background-repeat: repeat-x;
-				background-size: 130% 115px;
+				background-size: 130% 100px;
 				background-attachment: fixed;
 				background-position: center center;
 				padding-top: 0px;
@@ -34,24 +34,24 @@
 				text-align: center;
 			}
 			#sptgimg{
-				height: 35px;
+				height: 28px;
 				margin: 0px 5px;
 			}
 			#spytg{
-				height: 35px;
-				line-height: 35px;
+				height: 30px;
+				line-height: 30px;
 				color: #fff;
 				font-size: 20px;
 				letter-spacing: 2px;
 			}
 			#zzxjz{
 				color: #fff;
-				font-size: 40px;
+				font-size: 35px;
 				letter-spacing: 4px;
 			}
 			#myinfo{
 				position: fixed;
-				top: 15px;
+				top: 8px;
 				right: 15px;
 				color: #fff;
 			}
@@ -62,7 +62,7 @@
 			<div id="imgBgc">
 				<div id="spytg"><p><img src="../img/duigou.png" id="sptgimg" />审批已通过</p></div>
 				<div id="zzxjz"><p id="p">正在休假中</p></div>
-				<div id="myinfo"><div style="float: left;"></div>
+				<div id="myinfo"><div style="float: left;" onclick="parent.show('tapinfo');">个人信息 ></div>
 			</div>
 		</div>
 		<script>
@@ -73,14 +73,11 @@
 			}
 			var flag = getvalue("flag");
 			if(flag == 1){
-				document.getElementById("imgBgc").style.backgroundImage = "url(../img/动态防伪.png)";
+				document.getElementById("imgBgc").style.backgroundImage = "url(../img/rollpic.png)";
 				document.getElementById("p").innerHTML = "正在休假中";
 			}else{
-				document.getElementById("imgBgc").style.backgroundImage = "url(../img/动态防伪_ed.png)";
+				document.getElementById("imgBgc").style.backgroundImage = "url(../img/rollpic_ed.png)";
 				document.getElementById("p").innerHTML = "已完成";
-			}
-			function getstuinfo(){
-				top.location.href = "../page/studentinfo.html"
 			}
 		</script>
 	</body>

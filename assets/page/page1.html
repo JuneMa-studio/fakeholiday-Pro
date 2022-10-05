@@ -15,7 +15,7 @@
 				width: 100%;
 			}
 			#header{
-				height: 35px;
+				height: 60px;
 				width: 100%;
 				background-color: #3250e4;
 				padding-top: 30px;
@@ -24,7 +24,8 @@
 			}
 			#header div{
 				float: left;
-				height: 100%;
+				height: 35px;
+				padding-top: 25px;
 				color: #fff;
 			}
 			#school{
@@ -39,7 +40,7 @@
 				height: 55%
 			}
 			#area1{
-				margin-top: 70px;
+				margin-top: 100px;
 			}
 			#serch{
 				margin: 15px 15px;
@@ -108,7 +109,7 @@
 			#t2{
 				width: 100%;
 				position: sticky;
-				top: 65px;
+				top: 90px;
 			}
 			#t2 img{
 				width: 100%;
@@ -134,13 +135,13 @@
 					<table>
 						<tr>
 							<td onclick="gotohistory()"><img src="../img/goout.png"/></td>
-							<td><img src="../img/mark.png"/></td>
+							<td onclick="gotoqiandao()"><img src="../img/mark.png"/></td>
 							<td><img src="../img/flag.png"/></td>
 							<td onclick="jumpto3()"><img src="../img/more.png"/></td>
 						</tr>
 						<tr>
 							<td onclick="gotohistory()">请假</td>
-							<td>签到</td>
+							<td onclick="gotoqiandao()">签到</td>
 							<td>问答广场</td>
 							<td onclick="jumpto3()">服务中心</td>
 						</tr>
@@ -185,6 +186,9 @@
 			}
 			function gotosearch(){
 				top.location.href = "../page/search.html";
+			}
+			function gotoqiandao(){
+				top.location.href = "../page/qiandao.html"
 			}
 		</script>
 	</body>

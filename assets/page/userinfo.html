@@ -7,6 +7,7 @@
 		<style>
 			*{
 				margin: 0px;
+				font-size: 14px;
 			}
 			.inpt{
 				font-size: 20px;
@@ -29,7 +30,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body><br>
 		<h4 style="font-size: 40px;line-height: 100px;margin: 0 10px;" >开始使用</h4>
 		<p style="text-align: center;margin: 0 10px;">
 			<strong>请详细阅读以下内容以提升使用体验</strong><br><br>
@@ -44,6 +45,8 @@
 			<strong>5</strong>,本软件仅为前端开发者和爱好者提供一个可行的安卓运行静态网页的思路，项目详细信息参见我的-->设置-->关于我们，本软件不可作为进出校门的工具使用，用户使用本软件的安全责任，本软件及作者概不承担。
 			<br><br>
 			<strong>6</strong>,软件免费免费免费，重要的事情说三遍，如果您喜欢，可以在关于我们找到我的个人收款码进行捐赠，不捐赠并不影响正常使用，也请某些别有用心的人好自为之，不要试图用本软件敛财
+			<br><br>
+			<strong>ps</strong>:当前版本1.5，更新加入图片，需要用户学习使用微信小程序:"图床神器"，将你的头像和纸质证明上传并分别复制链接填写到指定的位置，此功能为暂时性功能，有效期限视小程序的维护情况，期间可能出现的信息泄露问题在所难免且与本人无关。
 		</p>
 		<p class="bt" >所在院校全称：</p>
 		<input class="inpt" type="text" id="school" value="" />
@@ -67,8 +70,15 @@
 		<p class="bt" >班级：</p>
 		<input class="inpt" type="text" id="banji" value="" />
 		<p class="bt" >宿舍：</p>
-		<input class="inpt" type="text" id="dormitory" value="" /><br><br>
-
+		<input class="inpt" type="text" id="dormitory" value=""/>
+		<p class="bt" >抄送人类别：</p>
+		<input class="inpt" type="text" id="csrtype" value="" placeholder="学生/老师"/>
+		<p class="bt" >抄送人姓名：</p>
+		<input class="inpt" type="text" id="csrname" value="" placeholder="选学生不用填"/>
+		<p class="bt" >开启时间：</p>
+		<input class="inpt" type="text" id="ruletime" value=""/>
+		<p class="bt" >操作人：</p>
+		<input class="inpt" type="text" id="ruleper" value=""/><br><br>
 		<button onclick="setitems()">保存修改</button>
 		<script>
 			function setitems(){
@@ -83,6 +93,11 @@
 				var major = document.getElementById('major').value;
 				var banji = document.getElementById('banji').value;
 				var dormitory = document.getElementById('dormitory').value;
+				var ruletime = document.getElementById('ruletime').value;
+				var ruleper = document.getElementById('ruleper').value;
+				var csrtype = document.getElementById('csrtype').value;
+				var csrname = document.getElementById('csrname').value;
+				
 				localStorage.setItem("school", school);
 				localStorage.setItem("username", username);
 				localStorage.setItem("truename", truename);
@@ -94,17 +109,11 @@
 				localStorage.setItem("major", major);
 				localStorage.setItem("banji", banji);
 				localStorage.setItem("dormitory", dormitory);
-				console.log(localStorage.getItem("school"));
-				console.log(localStorage.getItem("username"));
-				console.log(localStorage.getItem("truename"));
-				console.log(localStorage.getItem("studentid"));
-				console.log(localStorage.getItem("sex"));
-				console.log(localStorage.getItem("ethnic"));
-				console.log(localStorage.getItem("grade"));
-				console.log(localStorage.getItem("faculties"));
-				console.log(localStorage.getItem("major"));
-				console.log(localStorage.getItem("banji"));
-				console.log(localStorage.getItem("dormitory"));
+				localStorage.setItem("ruletime", ruletime);
+				localStorage.setItem("ruleper", ruleper);
+				localStorage.setItem("csrtype", csrtype);
+				localStorage.setItem("csrname", csrname);
+				
 				location.href = "../main.html";
 			}
 		</script>

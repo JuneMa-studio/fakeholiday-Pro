@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>抄送人</title>
+		<style>
+			*{
+				margin: 0px;
+				background-color: #f6f7f9;
+			}
+			#header{
+				height: 50px;
+				width: 100%;
+				padding-top: 25px;
+				background-color: #fff;
+				position: fixed;
+				top: 0px;
+				border-bottom: 1px solid #eee;
+			}
+			#back{
+				width: 14px;
+				height: 14px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 2px solid #000;
+				border-right: 2px solid #000;
+				transform:rotate(-135deg);
+				margin: 15px 20px;
+			}
+			#main{
+				margin-top: 75px;
+				height: 100%;
+				width: 100%;
+				background-color: #fdfdfd;
+				
+			}
+			#titl{
+				line-height: 40px;
+				font-size: 14px;
+				padding: 0 20px;
+				color: #727377;
+			}
+			#info{
+				background-color: #fff;
+				height: 40px;
+			}
+			#csrimg{
+				background-color: #fff;
+				float: left;
+				width: 20px;
+				margin-top: 10px;
+				margin-left: 20px;
+			}
+			#info p{
+				background-color: #fff;
+				line-height: 40px;
+			}
+			#tip{
+				text-align: center;
+				color: #a6a6b0;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<table style="width: 100%;background-color: #fff;border: 0px solid #fff;">
+				<tr>
+					<td style="width: 15%;background-color: #fff;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;background-color: #fff;"><p style="font-size: 20px;text-align: center;background-color: #fff;">抄送人</p></td>
+					<td style="width: 15%;background-color: #fff;"><p style="color: #f00;text-align: center;background-color: #fff;">反馈</p></td>
+				</tr>
+			</table>
+		</div>
+		<div id="main">
+			<p id="titl">学生</p>
+			<div id="info">
+				<img src="../img/csrimg.png" id="csrimg">
+				<p id="init">123123</p>
+			</div>
+			<p id="tip">没有更多了</p>
+		</div>
+		<script>
+			var csrtype = localStorage.getItem('csrtype');
+			console.log(csrtype);
+			if(csrtype == "学生"){
+				console.log(1);
+				document.getElementById('titl').innerHTML = "学生";
+				document.getElementById('init').innerHTML = localStorage.getItem('truename')+"/"+localStorage.getItem('studentid');
+			}else{
+				console.log(2);
+				document.getElementById('titl').innerHTML = "老师";
+				document.getElementById('init').innerHTML = localStorage.getItem('csrname');
+			}
+			function back(){
+				history.back()
+			}
+		</script>
+	</body>
+</html>

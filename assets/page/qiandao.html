@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>签到</title>
+		<style>
+			*{
+				margin: 0px; 
+			}
+			body{
+				background-color: #eee;
+			}
+			#header{
+				height: 50px;
+				width: 100%;
+				padding-top: 25px;
+				background-color: #fff;
+				position: fixed;
+				top: 0px;
+				border-bottom: 1px solid #eee;
+			}
+			#back{
+				width: 14px;
+				height: 14px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 2px solid #000;
+				border-right: 2px solid #000;
+				transform:rotate(-135deg);
+				margin: 15px 20px;
+			}
+			#main{
+				position: fixed;
+				background-color: #509ffc;
+				height: 100%;
+				width: 100%;
+				text-align: center;
+				top: 75px;
+			}
+			@keyframes scrollToUp {
+				0% {
+					background-position: 0 0;
+				}
+				100% {
+					background-position: 298% 0;
+				}
+			}
+			#roll{
+				height: 15px;
+				width: 100%;
+				margin-top: 160px;
+				text-align: center;
+				background-image: url(../img/b&y.png);
+				background-repeat: repeat-x;
+				background-size: 90% 100%;
+				background-position: center center;
+				animation: scrollToUp 2s linear infinite;
+			}
+			#roll div{
+				height: 15px;
+				padding: 0 38%;
+			}
+			#roll div p{
+				color: #fff;
+				height: 15px;
+				line-height: 15px;
+				font-size: 12px;
+				background-color: rgba(0, 0, 0, 0.2);
+				border-radius: 10px;
+			}
+			#now{
+				color: #fff;
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			#h{
+				font-size: 18px;
+				color: #fff;
+				line-height: 50px;
+			}
+			menu{
+				text-align: left;
+				margin-left: 10%;
+				color: #fff;
+			}
+			menu li::marker{
+				font-size: 3px;
+			}
+			#zz{
+				height: 300px;
+				position: absolute;
+				top: 160px;
+				left: 8%;
+				right: 8%;
+				background-color: ;
+				outline: 9999px solid #939496;
+				border-radius: 15px;
+			}
+			#home{
+				position: fixed;
+				top: 560px;
+				left: 35%;
+				right: 35%;
+				height: 30px;
+				line-height: 30px;
+				color: #fff;
+				border: 1px solid #fff;
+				border-radius: 5px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="main">
+			<div id="roll">
+				<div>
+					<p>动态防伪条</p>
+				</div>
+			</div>
+			<p id="now">当前时间：</p>
+			<p id="h">签到成功</p>
+			<menu>
+				<li id="name"></li>
+				<li id="studentid"></li>
+				<li id="sex"></li>
+				<li id="grade"></li>
+				<li id="faculties"></li>
+				<li id="major"></li>
+				<li id="banji"></li>
+				<li id="dormitory"></li>
+			</menu>
+			<div id="zz"></div>
+		</div>
+		<div id="header">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;">签到</p></td>
+					<td style="width: 15%;"></td>
+				</tr>
+			</table>
+		</div>
+		<div id="home" onclick="back()">返回APP首页</div>
+	</body>
+	<script>
+		document.getElementById("name").innerHTML = "姓名："+localStorage.getItem("truename");
+		document.getElementById("studentid").innerHTML = "学号："+ localStorage.getItem("studentid");
+		document.getElementById("sex").innerHTML = "性别："+ localStorage.getItem("sex");
+		document.getElementById("grade").innerHTML = "年级："+ localStorage.getItem("grade");
+		document.getElementById("faculties").innerHTML = "学院："+localStorage.getItem("faculties");
+		document.getElementById("major").innerHTML = "专业："+ localStorage.getItem("major");
+		document.getElementById("banji").innerHTML = "班级："+ localStorage.getItem("banji");
+		document.getElementById("dormitory").innerHTML = "宿舍："+ localStorage.getItem("dormitory");
+		function back(){
+			window.location.href = "../main.html";
+		}
+		function dateFormat(fmt,date){
+			var o = {
+				"M+" : date.getMonth()+1,
+				"d+" : date.getDate(),
+				"h+" : date.getHours(),
+				"m+" : date.getMinutes(),
+				"s+" : date.getSeconds(),
+			};
+			if(/(y+)/.test(fmt)){
+				fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+			}
+			for(var k in o)
+				if(new RegExp("("+ k +")").test(fmt))
+					fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+			return fmt;
+		}
+		function getnow(){
+			var now = new Date();
+			var nowstr = dateFormat("yyyy-MM-dd hh:mm:ss",now);
+			document.getElementById("now").innerHTML = "当前时间："+nowstr;
+		}
+		setInterval("getnow()",1000);
+	</script>
+</html>

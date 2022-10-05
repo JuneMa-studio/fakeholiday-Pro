@@ -11,17 +11,36 @@
 			#header{
 				height: 50px;
 				width: 100%;
+				padding-top: 25px;
 				background-color: #fff;
 				position: fixed;
 				top: 0px;
 				border-bottom: 1px solid #eee;
 			}
 			#header2{
-				height: 55px;
+				height: 53px;
 				width: 100%;
 				background-color: #fff;
 				position: fixed;
-				top: 51px;
+				top: 76px;
+			}
+			#header2 div{
+				width: 100%;
+				float: left;
+				text-align: center;
+			}
+			#header2 div div{
+				text-align: center;
+				width: 50%;
+			}
+			#header2 div div p{
+				line-height: 33px;
+				font-size: 14px;
+				margin: 0px 25%;
+			}
+			#title1{
+				color: #3399fe;
+				border-bottom: 2px solid #3399fe;
 			}
 			#selectline{
 				background-color: #3399fe;
@@ -53,7 +72,7 @@
 				border: #3399fe;
 			}
 			#area{
-				padding-top: 105px;
+				padding-top: 130px;
 				padding-bottom: 45px;
 			}
 			#nohistory{
@@ -65,14 +84,18 @@
 				padding: 8px 15px;
 				border-bottom: 1px solid #ccc;
 			}
+			.histb{
+				position: relative;
+				width: 100%;
+			}
 			#d1{
-				width: 70%;
 				font-size: 14px;
 				font-weight: 600;
 			}
 			#d2{
 				font-size: 12px;
-				text-align: right;
+				position: absolute;
+				right: 10px;
 			}
 			#d4{
 				font-size: 14px;
@@ -80,6 +103,8 @@
 		</style>
 	</head>
 	<body>
+		<div id="area">
+		</div>
 		<div id="header">
 			<table style="width: 100%;">
 				<tr>
@@ -91,14 +116,10 @@
 		</div>
 		<div id="header2">
 			<div style="height: 35px;" >
-				<div style="float: left;width: 50%;"><p id="title1" style="text-align: center;line-height: 35px;font-size: 14px;color: #3399fe;">请假记录</p></div>
-				<div><p id="title2" style="text-align: center;line-height: 35px;font-size: 14px;color: #6f6f6f;">无需审批记录</p></div>
+				<div style="float: left;width: 50%;"><p id="title1">请假记录</p></div>
+				<div><p id="title2">无需审批记录</p></div>
 			</div>
-			<div id="selectline"></div>
 			<img style="width: 100%;" src="../img/tip1.png"/>
-		</div>
-		<div id="area">
-			
 		</div>
 		<img id="nohistory" src="../img/no-history.png">
 		<div id="woyaoqingjia">
@@ -110,19 +131,20 @@
 			var pic = document.getElementById("nohistory");
 			var title1 = document.getElementById("title1");
 			var title2 = document.getElementById("title2");
-			var selectline = document.getElementById("selectline");
 			var botbut = document.getElementById("botbut");
 			title1.onclick = function(){
 				title1.style.color = "#3399fe";
+				title1.style.borderBottom = "2px solid #3399fe";
+				title2.style.borderBottom = "none";
 				title2.style.color = "#6f6f6f";
-				selectline.style.marginLeft = "12%";
 				pic.style.display = "none";
 				area.style.display = "";
 			}
 			title2.onclick = function(){
 				title2.style.color = "#3399fe";
+				title2.style.borderBottom = "2px solid #3399fe";
+				title1.style.borderBottom = "none";
 				title1.style.color = "#6f6f6f";
-				selectline.style.marginLeft = "62%";
 				pic.style.display = "";
 				area.style.display = "none";
 			}
@@ -199,7 +221,7 @@
 					//创建盒子对象
 					var element = document.createElement("div");
 					//编辑盒子对象的内容，id，类名
-					element.innerHTML = "<table onclick='jump(this)'><tr id='r1'><td id='d1'>我的 "+data.qjtype+"申请</td><td id=d2>"+sqdate+"</td></tr>"+
+					element.innerHTML = "<table class='histb' onclick='jump(this)'><tr id='r1'><td id='d1'>我的 "+data.qjtype+"申请</td><td id='d2'><p>"+sqdate+"</p></td></tr>"+
 					"<tr><td id='d3' style='font-size:12px' colspan='2'>请假时间："+data.bgdate+" "+data.bgtime+"至"+data.enddate+" "+data.endtime+" "+sjc_str+"</td></tr>"+
 					"<tr><td id='d5' style='font-size:12px' colspan='2'>实际休假时间："+data.bgdate+" "+data.bgtime+"至"+data.enddate+" "+data.endtime+" "+sjc_str+"</td></tr>"+
 					"<tr><td id='d4' colspan='2'>"+flag+"</td></tr></table>";
