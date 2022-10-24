@@ -47,12 +47,15 @@
 			<strong>6</strong>,软件免费免费免费，重要的事情说三遍，如果您喜欢，可以在关于我们找到我的个人收款码进行捐赠，不捐赠并不影响正常使用，也请某些别有用心的人好自为之，不要试图用本软件敛财
 			<br><br>
 			<strong>ps</strong>:当前版本1.5，更新加入图片，需要用户学习使用微信小程序:"图床神器"，将你的头像和纸质证明上传并分别复制链接填写到指定的位置，此功能为暂时性功能，有效期限视小程序的维护情况，期间可能出现的信息泄露问题在所难免且与本人无关。
+			图床神器暂且不出教程了，操作比较简单，当然有能力的可以选用其它图床平台，本软件仅使用获取到的链接。
 		</p>
 		<p class="bt" >所在院校全称：</p>
 		<input class="inpt" type="text" id="school" value="" />
 		<p class="bt" >个人主页昵称：</p>
 		<input class="inpt" type="text" id="username" value="" />
 		<p style="color: #f00;margin: 0 10px;" ><strong>以下内容用于显示在个人信息中：</strong></p>
+		<p class="bt" >证件照链接：</p>
+		<input class="inpt" type="text" id="stuimgsrc" value="" placeholder="白底证件照,比例控制为4:3"/>
 		<p class="bt" >姓名：</p>
 		<input class="inpt" type="text" id="truename" value="" />
 		<p class="bt" >学号：</p>
@@ -81,6 +84,22 @@
 		<input class="inpt" type="text" id="ruleper" value=""/><br><br>
 		<button onclick="setitems()">保存修改</button>
 		<script>
+			document.getElementById('school').value = localStorage.getItem("school");
+			document.getElementById('username').value = localStorage.getItem("username");
+			document.getElementById('truename').value = localStorage.getItem("truename");
+			document.getElementById('studentid').value = localStorage.getItem("studentid");
+			document.getElementById('sex').value = localStorage.getItem("sex");
+			document.getElementById('ethnic').value = localStorage.getItem("ethnic");
+			document.getElementById('grade').value = localStorage.getItem("grade");
+			document.getElementById('faculties').value = localStorage.getItem("faculties");
+			document.getElementById('major').value = localStorage.getItem("major");
+			document.getElementById('banji').value = localStorage.getItem("banji");
+			document.getElementById('dormitory').value = localStorage.getItem("dormitory");
+			document.getElementById('ruletime').value = localStorage.getItem("ruletime");
+			document.getElementById('ruleper').value = localStorage.getItem("ruleper");
+			document.getElementById('csrtype').value = localStorage.getItem("csrtype");
+			document.getElementById('csrname').value = localStorage.getItem("csrname");
+			document.getElementById('stuimgsrc').value = localStorage.getItem("stuimgsrc");
 			function setitems(){
 				var school = document.getElementById('school').value;
 				var username = document.getElementById('username').value;
@@ -97,6 +116,7 @@
 				var ruleper = document.getElementById('ruleper').value;
 				var csrtype = document.getElementById('csrtype').value;
 				var csrname = document.getElementById('csrname').value;
+				var stuimgsrc = document.getElementById('stuimgsrc').value;
 				
 				localStorage.setItem("school", school);
 				localStorage.setItem("username", username);
@@ -113,6 +133,7 @@
 				localStorage.setItem("ruleper", ruleper);
 				localStorage.setItem("csrtype", csrtype);
 				localStorage.setItem("csrname", csrname);
+				localStorage.setItem("stuimgsrc", stuimgsrc);
 				
 				location.href = "../main.html";
 			}

@@ -112,6 +112,10 @@
 				<tr style="height: 60px;">
 					<td></td>
 				</tr>
+				<tr>
+					<td>附件图片</td>
+					<td><input id="fujian" type="text" value="" placeholder="此处粘贴附件图床链接"/></td>
+				</tr>
 			</table>
 			<hr>
 			<table class="maintb">
@@ -224,6 +228,7 @@
 				var temp_enddate = document.getElementById("enddate");
 				var temp_endtime = document.getElementById("endtime");
 				var temp_where = document.getElementById("where");
+				var temp_fujian = document.getElementById("fujian");
 				
 				var temp = {
 					qjtype:temp_qjtype.value,
@@ -232,6 +237,7 @@
 					enddate:temp_enddate.value,
 					endtime:temp_endtime.value,
 					where:temp_where.value,
+					fujian:temp_fujian.value,
 				}
 				var time = new Date().getTime();
 				localStorage['_fk'+time] = JSON.stringify(temp);

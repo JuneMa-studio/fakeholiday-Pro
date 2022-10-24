@@ -67,6 +67,7 @@
 			}
 			#main{
 				display: block;
+				position: absolute;
 			}
 			#selectline{
 				background-color: #3399fe;
@@ -93,13 +94,15 @@
 			}
 			#blue{
 				width: fit-content;
+				height: 30px;
+				margin-top: 6px;
 				text-align: center;
-				line-height: 40px;
+				line-height: 30px;
 				font-weight: 800;
 				font-size: 14px;
 				color: #3399fe;
 				background-color: #ebf5ff;
-				border: 2px solid #99c2f0;
+				border: 1px solid #99c2f0;
 				border-radius: 5px;
 				padding: 0 5px;
 			}
@@ -164,14 +167,15 @@
 			}
 			.list .time{
 				width: 30%;
+				text-align: right;
 			}
 			#bb{
 				width: 100%-10px;
-				height: 40px;
+				height: 25px;
 				background-color: rgb(246, 247, 249);
-				border: 2px solid rgb(214, 221, 229);
+				border: 1px solid rgb(214, 221, 229);
 				border-radius: 8px ;
-				line-height: 40px;
+				line-height: 25px;
 				padding-left: 10px;
 			}
 			#qr_side{
@@ -255,22 +259,23 @@
 				left: 0px;
 				right: 0px;
 				bottom: 0px;
-				padding: 180px 60px;
+				padding: 150px 40px;
 				display: none;
 			}
 			#infocard{
 				background-color: #fff;
-				padding: 30px 15px;
+				padding: 20px 0px;
 				border-radius: 10px;
 				position: relative;
 			}
 			.close::before,.close::after {
 			    position: absolute;
 				top: 15px;
-				right: 30px;
+				right: 25px;
 			    content: ' ';
-			    background-color: #000;
-			    width: 1px;
+			    background-color: #697078;
+				border-radius: 1px;
+			    width: 2px;
 			    height: 20px;
 			}
 			.close::before {
@@ -383,19 +388,19 @@
 		</style>
 	</head>
 	<body>
-		
 		<div id="main">
 			<iframe id="rollpart" src="roll_rq.html"></iframe>
+			<p style="position: absolute;color: #fff;top: 140px;right: 15px;" onclick="show('tapinfo')">个人信息 ></p>
 			<div id="area1">
 				<table style="width: 100%;">
 					<tr>
-						<td style="width: 50%;">
+						<td style="width: 50%;" valign="top">
 							<div class="q">请假类型：</div>
-							<p id="qjtype">事假</p>
+							<p id="qjtype" style="margin-left: 60px;">事假</p>
 						</td>
-						<td style="width: 50%;">
+						<td style="width: 50%;" valign="top">
 							<div class="q">需要离校：</div>
-							<p style="color: #e89f2c;">离校</p>
+							<p>离校</p>
 						</td>
 					</tr>
 					<tr>
@@ -414,7 +419,7 @@
 			</div>
 			<div style="background-color: rgb(245, 246, 248);height: 20px;" ></div>
 			<div id="area2">
-				<table style="width: 100%;">
+				<table style="width: 100%;" valign="top">
 					<tr>
 						<td colspan="2">
 							<p style="margin: 6px 0px;font-size: 18px;font-weight: 600;color: #000;" >我的 请假申请</p>
@@ -450,7 +455,7 @@
 					<tr>
 						<td colspan="2">
 							<div class="q">请假原因：</div>
-							<p id="because"></p>
+							<p id="because"  style="margin-left: 60px;"></p>
 						</td>
 					</tr>
 					<tr>
@@ -460,21 +465,29 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" onclick="top.location.href = 'CHAOSONGREN.html';">
+						<td colspan="2">
 							<div class="q">抄送人：</div>
-							<p id="" >已选择1人<a style='text-decoration: none;color: rgb(44, 140, 240);' >&nbsp;查看> </a></p>
+							<p id="csr" style="margin-left: 60px;">已选择1人<a style='text-decoration: none;color: rgb(44, 140, 240);' >&nbsp;查看> </a></p>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<div class="q">目的地：</div>
-							<p id="where" style="margin-left: 50px;"></p>
+							<p id="where" style="margin-left: 60px;"></p>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<div class="q">宿舍信息：</div>
-							<p id="dormitory"></p>
+							<p id="dormitory"  style="margin-left: 60px;"></p>
+						</td>
+					</tr>
+					<tr id="fjtr" style="display: none;">
+						<td colspan="2">
+							<div class="q">附件：</div>
+							<p style="height: 60px;margin-left: 50px;">
+								<img style="width: 50px;height: 50px;clip: rect(0px 50px 50px 0px);" id="fujian" src=""/>
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -567,6 +580,22 @@
 				</tr>
 			</table>
 		</div>
+		<div id="header" >
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;color: #000;"><img style="height: 20px;" src="../img/dun.png"/>请假详情</p></td>
+					<td style="width: 15%;"><p style="color: #f00;text-align: center;">反馈</p></td>
+				</tr>
+			</table>
+		</div>
+		<div id="header2">
+			<div style="height: 35px;">
+				<div style="float: left;width: 50%;"><p id="title1" >请假信息</p></div>
+				<div><p id="title2">核验二维码</p></div>
+			</div>
+			<img style="width: 100%;height: 20px;" src="../img/tip2.png"/>
+		</div>
 		<div id="qr_side">
 			<div id="bkground">
 				<table>
@@ -627,25 +656,49 @@
 		</div>
 		<div id="tapinfo">
 			<div id="infocard">
-				<table style="width: 100%;">
+				<table style="width: 100%;margin-left: 15px;color: #0f0f0f;font-weight: 600;">
 					<tr>
-						<td style="width: 30%;"></td>
-						<td>个人信息</td>
+						<td></td>
+						<td><p style="font-size: 14px;">个人信息</p></td>
 						<td style="width: 30%;"><div class="close" onclick="closecard()"></div></td>
 					</tr>
+					<tr style="height: 20px;">
+						<td valign="top" style="width: fit-content;"><p>• 照片:</p></td>
+						<td><img id="stuimgsrc" style="width: 70px;height: 95px;margin-left: -60px;" src=""/></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 姓名:</p></td>
+						<td><p id="truename" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 学号:</p></td>
+						<td><p id="studentid" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 性别:</p></td>
+						<td><p id="sex" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 年级:</p></td>
+						<td><p id="grade" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 学院:</p></td>
+						<td><p id="faculties" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 专业:</p></td>
+						<td><p id="major" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 班级:</p></td>
+						<td><p id="banji" style="text-align: left;"></p></td>
+					</tr>
+					<tr style="height: 20px;">
+						<td valign="top"><p>• 宿舍:</p></td>
+						<td><p id="sushe" style="text-align: left;"></p></td>
+					</tr>
 				</table>
-				<menu>
-					<li>照片：-</li>
-					<li id="truename"></li>
-					<li id="studentid"></li>
-					<li id="sex"></li>
-					<li id="ethnic"></li>
-					<li id="grade"></li>
-					<li id="faculties"></li>
-					<li id="major"></li>
-					<li id="banji"></li>
-					<li id="sushe"></li>
-				</menu>
 			</div>
 		</div>
 		<div id="rulecard">
@@ -667,35 +720,30 @@
 				<button id="tlbut" onclick="closetlcard()">知道了</button>
 			</div>
 		</div>
-		<div id="header" >
-			<table style="width: 100%;">
-				<tr>
-					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
-					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;color: #000;"><img style="height: 20px;" src="../img/dun.png"/>请假详情</p></td>
-					<td style="width: 15%;"><p style="color: #f00;text-align: center;">反馈</p></td>
-				</tr>
-			</table>
-		</div>
-		<div id="header2">
-			<div style="height: 35px;">
-				<div style="float: left;width: 50%;"><p id="title1" >请假信息</p></div>
-				<div><p id="title2">核验二维码</p></div>
-			</div>
-			<img style="width: 100%;height: 20px;" src="../img/tip2.png"/>
-		</div>
 		<script>
-			document.getElementById("truename").innerHTML = "姓名："+localStorage.getItem("truename");
-			document.getElementById("studentid").innerHTML = "学号："+localStorage.getItem("studentid");
-			document.getElementById("sex").innerHTML = "性别："+localStorage.getItem("sex");
-			document.getElementById("ethnic").innerHTML = "民族："+localStorage.getItem("ethnic");
-			document.getElementById("grade").innerHTML = "年级："+localStorage.getItem("grade");
-			document.getElementById("faculties").innerHTML = "学院："+localStorage.getItem("faculties");
-			document.getElementById("major").innerHTML = "专业："+localStorage.getItem("major");
-			document.getElementById("banji").innerHTML = "班级："+localStorage.getItem("banji");
+			var csr = localStorage.getItem("csrtype");
+			if(csr != null && csr !=undefined && csr != ""){
+				
+				document.getElementById('csr').innerHTML = "已选择1人<a style='text-decoration: none;color: rgb(44, 140, 240);' onclick='gocsr()'>&nbsp;查看> </a>"
+			}else{
+				document.getElementById('csr').innerHTML = "无";
+			}
+			function gocsr(){
+				top.location.href = "CHAOSONGREN.html"
+			}
+			document.getElementById("stuimgsrc").src = localStorage.getItem("stuimgsrc");
+			document.getElementById("truename").innerHTML = localStorage.getItem("truename");
+			document.getElementById("studentid").innerHTML = localStorage.getItem("studentid");
+			document.getElementById("sex").innerHTML = localStorage.getItem("sex");
+			document.getElementById("grade").innerHTML = localStorage.getItem("grade");
+			document.getElementById("faculties").innerHTML = localStorage.getItem("faculties");
+			document.getElementById("major").innerHTML = localStorage.getItem("major");
+			document.getElementById("banji").innerHTML = localStorage.getItem("banji");
 			document.getElementById("dormitory").innerHTML = localStorage.getItem("dormitory");
-			document.getElementById("sushe").innerHTML = "宿舍："+localStorage.getItem("dormitory");
+			document.getElementById("sushe").innerHTML = localStorage.getItem("dormitory");
 			document.getElementById("ruletime").innerHTML = "开启时间："+localStorage.getItem("ruletime");
 			document.getElementById("ruleper").innerHTML = "操作人："+localStorage.getItem("ruleper");
+			var stuimgsrc = localStorage.getItem('stuimgsrc');
 			//取随机数
 			function randomNum(minNum,maxNum){ 
 			    switch(arguments.length){ 
@@ -720,8 +768,13 @@
 			var time = getvalue("tmp");
 			//json对封装的数据解码
 			var data = JSON.parse(localStorage['_fk'+time]);
+			var fujian = data.fujian;
+			if(fujian != null && fujian != undefined && fujian != ""){
+				document.getElementById('fujian').src = fujian;
+				document.getElementById('fjtr').style.display = "table";
+			}
 			//下面可以直接使用data.name来使用封装的数据
-			// document.getElementById("qjtype").innerHTML = "<p class='q'>请假类型：</p>"+data.qjtype;
+			document.getElementById("qjtype").innerHTML = data.qjtype;
 			var bgtmp = Date.parse(data.bgdate+" "+data.bgtime);//格式化开始时间
 			var sqtmp = new Date(bgtmp - 6000000);//伪造并文本化申请日期
 			var endtmp = Date.parse(data.enddate+" "+data.endtime);//格式化结束时间
@@ -750,14 +803,17 @@
 				document.getElementById("rollpart").src = "roll_rq.html?flag="+0;
 				document.getElementById("qr_area").style.backgroundImage = "url(../img/rollpic_ed.png)"
 				document.getElementById('p').innerHTML = "已完成";
+				document.getElementById("end_bg").innerHTML = data.bgdate.substring(5)+" "+
+				data.bgtime+" ~ "+data.enddate.substring(5)+" "+data.endtime+" "+"（共"+sjc_str+"）";
 			}else{
 				document.getElementById("rollpart").src = "roll_rq.html?flag="+1;
 				document.getElementById("qr_area").style.backgroundImage = "url(../img/rollpic.png)"
 				document.getElementById('p').innerHTML = "正在休假中";
+				document.getElementById("end_bg").innerHTML = "-";
+				document.getElementById("end_bg").style.color = "#697078";
 			}
 			document.getElementById("timeline").src = "../page/timeline1.html?bg="+bgtmp;
-			document.getElementById("end_bg").innerHTML = data.bgdate.substring(5)+" "+
-			data.bgtime+" ~ "+data.enddate.substring(5)+" "+data.endtime+" "+"（共"+sjc_str+"）";
+			
 			document.getElementById("blue").innerHTML = sjc_str;
 			document.getElementById("bgtime").innerHTML = data.bgdate.substring(5)+" "+data.bgtime;
 			document.getElementById("endtime").innerHTML = data.enddate.substring(5)+" "+data.endtime;
