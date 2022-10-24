@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>开始使用</title>
+		<style>
+			*{
+				margin: 0px;
+				font-size: 14px;
+			}
+			.inpt{
+				font-size: 20px;
+				width: 50%;
+				margin-left: 10%;
+			}
+			.bt{
+				margin-left: 3%;
+			}
+			button{
+				width: 100%;
+				align: center;
+				height: 40px;
+			}
+			.a{
+				width: 100%;
+			}
+			.a div{
+				float: left;
+			}
+		</style>
+	</head>
+	<body><br>
+		<h4 style="font-size: 40px;line-height: 100px;margin: 0 10px;" >开始使用</h4>
+		<p style="text-align: center;margin: 0 10px;">
+			<strong>请详细阅读以下内容以提升使用体验</strong><br><br>
+			<strong>1</strong>,以下填写的所有内容均保存到本地，除首页的搜索框具备浏览器功能需要联网外，其余界面均为本地运行，不会造成数据泄露请放心填写。
+			<br><br>
+			<strong>2</strong>,如果长期使用本软件，可能会触发数据丢失和错乱的严重问题，此时仅需在我的-->设置-->清除缓存点击一次即可，这会清除所有的请假记录。
+			<br><br>
+			<strong>3</strong>,如果使用本软件时发现界面元素轻微偏移，需要调整手机开发者选项中的最小宽度的值，具体操作方法详见我的-->帮助反馈。
+			<br><br>
+			<strong>4</strong>,假条页面的二维码不能被辅导猫识别，这点不可修复，若用户所在院校使用辅导猫全套考勤设备，本软件将毫无作用，更多注意事项请移步帮助反馈页面。
+			<br><br>
+			<strong>5</strong>,本软件仅为前端开发者和爱好者提供一个可行的安卓运行静态网页的思路，项目详细信息参见我的-->设置-->关于我们，本软件不可作为进出校门的工具使用，用户使用本软件的安全责任，本软件及作者概不承担。
+			<br><br>
+			<strong>6</strong>,软件免费免费免费，重要的事情说三遍，如果您喜欢，可以在关于我们找到我的个人收款码进行捐赠，不捐赠并不影响正常使用，也请某些别有用心的人好自为之，不要试图用本软件敛财
+			<br><br>
+			<strong>ps</strong>:当前版本1.5，更新加入图片，需要用户学习使用微信小程序:"图床神器"，将你的头像和纸质证明上传并分别复制链接填写到指定的位置，此功能为暂时性功能，有效期限视小程序的维护情况，期间可能出现的信息泄露问题在所难免且与本人无关。
+			图床神器暂且不出教程了，操作比较简单，当然有能力的可以选用其它图床平台，本软件仅使用获取到的链接。
+		</p>
+		<p class="bt" >所在院校全称：</p>
+		<input class="inpt" type="text" id="school" value="" />
+		<p class="bt" >个人主页昵称：</p>
+		<input class="inpt" type="text" id="username" value="" />
+		<p style="color: #f00;margin: 0 10px;" ><strong>以下内容用于显示在个人信息中：</strong></p>
+		<p class="bt" >证件照链接：</p>
+		<input class="inpt" type="text" id="stuimgsrc" value="" placeholder="白底证件照,比例控制为4:3"/>
+		<p class="bt" >姓名：</p>
+		<input class="inpt" type="text" id="truename" value="" />
+		<p class="bt" >学号：</p>
+		<input class="inpt" type="text" id="studentid" value="" />
+		<p class="bt" >性别：</p>
+		<input class="inpt" type="text" id="sex" value="" />
+		<p class="bt" >民族：</p>
+		<input class="inpt" type="text" id="ethnic" value="" />
+		<p class="bt" >年级：</p>
+		<input class="inpt" type="text" id="grade" value="" />
+		<p class="bt" >学院(系)：</p>
+		<input class="inpt" type="text" id="faculties" value="" />
+		<p class="bt" >专业：</p>
+		<input class="inpt" type="text" id="major" value="" />
+		<p class="bt" >班级：</p>
+		<input class="inpt" type="text" id="banji" value="" />
+		<p class="bt" >宿舍：</p>
+		<input class="inpt" type="text" id="dormitory" value=""/>
+		<p class="bt" >抄送人类别：</p>
+		<input class="inpt" type="text" id="csrtype" value="" placeholder="学生/老师"/>
+		<p class="bt" >抄送人姓名：</p>
+		<input class="inpt" type="text" id="csrname" value="" placeholder="选学生不用填"/>
+		<p class="bt" >开启时间：</p>
+		<input class="inpt" type="text" id="ruletime" value=""/>
+		<p class="bt" >操作人：</p>
+		<input class="inpt" type="text" id="ruleper" value=""/><br><br>
+		<button onclick="setitems()">保存修改</button>
+		<script>
+			document.getElementById('school').value = localStorage.getItem("school");
+			document.getElementById('username').value = localStorage.getItem("username");
+			document.getElementById('truename').value = localStorage.getItem("truename");
+			document.getElementById('studentid').value = localStorage.getItem("studentid");
+			document.getElementById('sex').value = localStorage.getItem("sex");
+			document.getElementById('ethnic').value = localStorage.getItem("ethnic");
+			document.getElementById('grade').value = localStorage.getItem("grade");
+			document.getElementById('faculties').value = localStorage.getItem("faculties");
+			document.getElementById('major').value = localStorage.getItem("major");
+			document.getElementById('banji').value = localStorage.getItem("banji");
+			document.getElementById('dormitory').value = localStorage.getItem("dormitory");
+			document.getElementById('ruletime').value = localStorage.getItem("ruletime");
+			document.getElementById('ruleper').value = localStorage.getItem("ruleper");
+			document.getElementById('csrtype').value = localStorage.getItem("csrtype");
+			document.getElementById('csrname').value = localStorage.getItem("csrname");
+			document.getElementById('stuimgsrc').value = localStorage.getItem("stuimgsrc");
+			function setitems(){
+				var school = document.getElementById('school').value;
+				var username = document.getElementById('username').value;
+				var truename = document.getElementById('truename').value;
+				var studentid = document.getElementById('studentid').value;
+				var sex = document.getElementById('sex').value;
+				var ethnic = document.getElementById('ethnic').value;
+				var grade = document.getElementById('grade').value;
+				var faculties = document.getElementById('faculties').value;
+				var major = document.getElementById('major').value;
+				var banji = document.getElementById('banji').value;
+				var dormitory = document.getElementById('dormitory').value;
+				var ruletime = document.getElementById('ruletime').value;
+				var ruleper = document.getElementById('ruleper').value;
+				var csrtype = document.getElementById('csrtype').value;
+				var csrname = document.getElementById('csrname').value;
+				var stuimgsrc = document.getElementById('stuimgsrc').value;
+				
+				localStorage.setItem("school", school);
+				localStorage.setItem("username", username);
+				localStorage.setItem("truename", truename);
+				localStorage.setItem("studentid", studentid);
+				localStorage.setItem("sex", sex);
+				localStorage.setItem("ethnic", ethnic);
+				localStorage.setItem("grade", grade);
+				localStorage.setItem("faculties", faculties);
+				localStorage.setItem("major", major);
+				localStorage.setItem("banji", banji);
+				localStorage.setItem("dormitory", dormitory);
+				localStorage.setItem("ruletime", ruletime);
+				localStorage.setItem("ruleper", ruleper);
+				localStorage.setItem("csrtype", csrtype);
+				localStorage.setItem("csrname", csrname);
+				localStorage.setItem("stuimgsrc", stuimgsrc);
+				
+				location.href = "../main.html";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>历史记录</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#header{
+				height: 50px;
+				width: 100%;
+				padding-top: 25px;
+				background-color: #fff;
+				position: fixed;
+				top: 0px;
+				border-bottom: 1px solid #eee;
+			}
+			#header2{
+				height: 53px;
+				width: 100%;
+				background-color: #fff;
+				position: fixed;
+				top: 76px;
+			}
+			#header2 div{
+				width: 100%;
+				float: left;
+				text-align: center;
+			}
+			#header2 div div{
+				text-align: center;
+				width: 50%;
+			}
+			#header2 div div p{
+				line-height: 33px;
+				font-size: 14px;
+				margin: 0px 25%;
+			}
+			#title1{
+				color: #3399fe;
+				border-bottom: 2px solid #3399fe;
+			}
+			#selectline{
+				background-color: #3399fe;
+				height: 2px;
+				width: 100px;
+				margin-left: 12%;
+				/* margin-left: 62%; */
+			}
+			#back{
+				width: 14px;
+				height: 14px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 2px solid #000;
+				border-right: 2px solid #000;
+				transform:rotate(-135deg);
+				margin: 15px 20px;
+			}
+			#woyaoqingjia{
+				height: 45px;
+				width: 100%;
+				position: fixed;
+				bottom: 0px;
+			}
+			#botbut{
+				width: 100%;
+				height: 100%;
+				background-color: #3399fe;
+				color: #fff;
+				border: #3399fe;
+			}
+			#area{
+				padding-top: 130px;
+				padding-bottom: 45px;
+			}
+			#nohistory{
+				width: 30%;
+				padding: 70% 35%;
+			}
+			.historylist{
+				height: auto;
+				padding: 8px 15px;
+				border-bottom: 1px solid #ccc;
+			}
+			.histb{
+				position: relative;
+				width: 100%;
+			}
+			#d1{
+				font-size: 14px;
+				font-weight: 600;
+			}
+			#d2{
+				font-size: 12px;
+				position: absolute;
+				right: 10px;
+			}
+			#d4{
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="area">
+		</div>
+		<div id="header">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;"><img style="height: 20px;" src="../img/dun.png"/>请假</p></td>
+					<td style="width: 15%;"><p style="color: #f00;text-align: center;">反馈</p></td>
+				</tr>
+			</table>
+		</div>
+		<div id="header2">
+			<div style="height: 35px;" >
+				<div style="float: left;width: 50%;"><p id="title1">请假记录</p></div>
+				<div><p id="title2">无需审批记录</p></div>
+			</div>
+			<img style="width: 100%;" src="../img/tip1.png"/>
+		</div>
+		<img id="nohistory" src="../img/no-history.png">
+		<div id="woyaoqingjia">
+			<button  id="botbut" onclick="gotoinput()">我要请假</button>
+		</div>
+		
+		<script>
+			var area = document.getElementById("area");
+			var pic = document.getElementById("nohistory");
+			var title1 = document.getElementById("title1");
+			var title2 = document.getElementById("title2");
+			var botbut = document.getElementById("botbut");
+			title1.onclick = function(){
+				title1.style.color = "#3399fe";
+				title1.style.borderBottom = "2px solid #3399fe";
+				title2.style.borderBottom = "none";
+				title2.style.color = "#6f6f6f";
+				pic.style.display = "none";
+				area.style.display = "";
+			}
+			title2.onclick = function(){
+				title2.style.color = "#3399fe";
+				title2.style.borderBottom = "2px solid #3399fe";
+				title1.style.borderBottom = "none";
+				title1.style.color = "#6f6f6f";
+				pic.style.display = "";
+				area.style.display = "none";
+			}
+			
+			function back(){
+				location.href = "../main.html"
+			}
+			function gotoinput(){
+				window.location.href = "../page/input.html";
+			}
+			
+			function dateFormat(fmt,date){
+				var o = {
+					"M+" : date.getMonth()+1,
+					"d+" : date.getDate(),
+					"h+" : date.getHours(),
+					"m+" : date.getMinutes(),
+					"s+" : date.getSeconds(),
+				};
+				if(/(y+)/.test(fmt)){
+					fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+				}
+				for(var k in o)
+					if(new RegExp("("+ k +")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+				return fmt;
+			}
+			
+			var sz = JSON.parse(localStorage.getItem('timesheet'));
+			//如果产生了数据，则隐藏图片
+			if(localStorage['_fk'+sz[0]] != undefined){
+				pic.style.display = "none";
+			}else{
+				pic.style.display = "";
+			}
+			var nowtime = new Date();
+			var i;
+			for( i in sz){
+				//因为key为0的值是初始化数组的字符，不对应任何历史记录，会报错undefined
+				//所以需要if判断来排除
+				if(localStorage['_fk'+sz[i]] == undefined){
+					i = i+1;
+				}else{
+					//获取时间戳对应的数据
+					var data = JSON.parse(localStorage['_fk'+sz[i]]);
+					var bgtmp = Date.parse(data.bgdate+" "+data.bgtime);//格式化开始时间
+					var sqtmp = new Date(bgtmp - 6000000);//伪造并文本化申请日期
+					var endtmp = Date.parse(data.enddate+" "+data.endtime);//格式化结束时间
+					var end_bg = new Date(endtmp-bgtmp)/1000/60;//文本化请假时长
+					var D = parseInt(end_bg/1440);
+					var H = parseInt((end_bg%1440)/60);
+					var M = parseInt((end_bg%1440)%60);
+					if(D!=0 && H!=0 && M!=0){
+						var sjc_str = "（共"+D+"天"+H+"小时"+M+"分钟）";
+					}else if(D==0 && H!=0 && M!=0){
+						var sjc_str = "（共"+H+"小时"+M+"分钟）";
+					}else if(D==0 && H==0 && M!=0){
+						var sjc_str = "（共"+M+"分钟）";
+					}else if(D!=0 && H==0 && M==0){
+						var sjc_str = "（共"+D+"天）";
+					}else if(D!=0 && H!=0 && M==0){
+						var sjc_str = "（共"+D+"天"+H+"小时）";
+					}else if(D!=0 && H==0 && M!=0){
+						var sjc_str = "（共"+D+"天"+M+"分钟）";
+					}else if(D==0 && H!=0 && M==0){
+						var sjc_str = "（共"+H+"小时）";
+					}
+					var sqdate = dateFormat("MM-dd hh:mm",sqtmp);//申请日期转化为字符串
+					if(i == 0){
+						flag = "正在休假中";
+					}else{
+						flag = "已完成";
+					}
+					//创建盒子对象
+					var element = document.createElement("div");
+					//编辑盒子对象的内容，id，类名
+					element.innerHTML = "<table class='histb' onclick='jump(this)'><tr id='r1'><td id='d1'>我的 "+data.qjtype+"申请</td><td id='d2'><p>"+sqdate+"</p></td></tr>"+
+					"<tr><td id='d3' style='font-size:12px' colspan='2'>请假时间："+data.bgdate+" "+data.bgtime+"至"+data.enddate+" "+data.endtime+" "+sjc_str+"</td></tr>"+
+					"<tr><td id='d5' style='font-size:12px' colspan='2'>实际休假时间："+data.bgdate+" "+data.bgtime+"至"+data.enddate+" "+data.endtime+" "+sjc_str+"</td></tr>"+
+					"<tr><td id='d4' colspan='2'>"+flag+"</td></tr></table>";
+					
+					element.className = "historylist";
+					element.id = sz[i];
+					//将创建好并插值的盒子对象追加到指定位置
+					document.getElementById("area").appendChild(element);
+				}
+			}
+			var str = document.getElementById("d4");
+			var d5 = document.getElementById("d5");
+			if(str.textContent == "正在休假中"){
+				d5.style.display = "none"
+			}
+			function jump(el){
+				var parentid = el.parentNode.id;
+				window.location.href = "../page/app.html?tmp="+el.parentNode.id;
+			}
+		</script>
+	</body>
+</html>

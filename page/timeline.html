@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#timeline{
+				width: 100%;
+				height: auto;
+			}
+			.list {
+				position: relative;
+				padding-left: 8px;
+				margin: 0px 15px;
+				overflow: hidden;
+			}
+			#line {
+				position: absolute;
+				width: 1px;
+				height: 20px;
+				background: #eee;
+				top: 25px;
+				left: 10px;
+			}
+			.list .item {
+				margin-left: 15px;
+				padding: 5px 0px;
+				color: #888;
+				position: relative;
+			}
+			.list .circle {
+				width: 15px;
+				height: 15px;
+				background-color: #fff;
+				border: 1px solid rgb(32, 133, 241);
+				border-radius: 50%;
+				position: absolute;
+				top: 10px;
+				left: -21px;
+			}
+			._p{
+				width: fit-content;
+				height: 25px;
+				padding: 0px 8px;
+				margin-top: 0px;
+				background-color: #fff;
+				border: 1px solid rgb(32, 133, 241);
+				border-radius: 5px ;
+				color: rgb(32, 133, 241);
+			}
+			._p p{
+				font-size: 12px;
+				white-space: nowrap;
+				margin-right: 25px;
+				line-height: 25px;
+			}
+			.r{
+				height: 20px;
+			}
+			#tl_img{
+				width: 15px;
+				margin-top: 5px;
+				margin-right: 5px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="timeline">
+			<div class="list">
+				<div id="line"></div>
+				<div class="item" id="item1">
+					<div class="circle"></div>
+					<div class="text">
+						<table style="width: 100%;border: 0px;" >
+							<tr>
+								<td><p class="titles">一级审核人</p></td>
+							</tr>
+							<tr>
+								<td class="r" ><div class="_p" id="g1_p"></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="item" id="item2">
+					<div class="circle"></div>
+					<div class="text">
+						<table style="width: 100%;border: 0px;" >
+							<tr>
+								<td><p class="titles">二级审核人</p></td>
+							</tr>
+							<tr>
+								<td class="r" ><div class="_p" id="g2_p"></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="item" id="item3">
+					<div class="circle"></div>
+					<div class="text">
+						<table style="width: 100%;border: 0px;" >
+							<tr>
+								<td><p class="titles">三级审核人</p></td>
+							</tr>
+							<tr>
+								<td class="r" ><div class="_p" id="g3_p"></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="item" id="item4">
+					<div class="circle"></div>
+					<div class="text">
+						<table style="width: 100%;border: 0px;margin: 0px;" >
+							<tr>
+								<td><p class="titles">四级审核人</p></td>
+							</tr>
+							<tr>
+								<td class="r" ><div class="_p" id="g4_p"></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.getElementById("g1_p").innerHTML = "<img id='tl_img' src='../img/tl_p_img.png' /><p>"+localStorage.getItem("g1_p")+"</p>";
+			document.getElementById("g2_p").innerHTML = "<img id='tl_img' src='../img/tl_p_img.png' /><p>"+localStorage.getItem("g2_p")+"</p>";
+			document.getElementById("g3_p").innerHTML = "<img id='tl_img' src='../img/tl_p_img.png' /><p>"+localStorage.getItem("g3_p")+"</p>";
+			document.getElementById("g4_p").innerHTML = "<img id='tl_img' src='../img/tl_p_img.png' /><p>"+localStorage.getItem("g4_p")+"</p>";
+			var g =[];
+			var g1 = localStorage.getItem("g1");
+			g.push(g1);
+			var g2 = localStorage.getItem("g2");
+			g.push(g2);
+			var g3 = localStorage.getItem("g3");
+			g.push(g3);
+			var g4 = localStorage.getItem("g4");
+			g.push(g4);
+			var item1 = document.getElementById("item1");
+			var item2 = document.getElementById("item2");
+			var item3 = document.getElementById("item3");
+			var item4 = document.getElementById("item4");
+			var line_el = document.getElementById("line");
+			var people = 0;
+			for(var n = 0;n<=3;n++){
+				if(g[n] != null && g[n] != ""){
+					people = n + 1;
+				}
+			}
+			console.log(people);
+			switch(people){
+				case 1 : line_el.style.height = "0%";item2.style.display = "none";item3.style.display = "none";item4.style.display = "none";break;
+				case 2 : line_el.style.height = "55%";item3.style.display = "none";item4.style.display = "none";break;
+				case 3 : line_el.style.height = "65%";item4.style.display = "none";break;
+				case 4 : line_el.style.height = "75%";break;
+			}
+		</script>
+	</body>
+</html>

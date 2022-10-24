@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				font-size: 18px;
+			}
+			.back{
+				width: 6px;
+				height: 6px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 1px solid #6f6f6f;
+				border-right: 1px solid #6f6f6f;
+				transform:rotate(45deg);
+				margin: 25px 0px;
+			}
+			#header{
+				width: 100%;
+				height: 140px;
+				background-color: #3250e4;
+				color: #fff;
+			}
+			#header div{
+				float: left;
+				margin-top: 50px;
+			}
+			#touxiang{
+				width: 55px;
+				border-radius: 27px;
+				margin-top: 20px;
+				margin-left: 12px;
+				margin-right: 15px;
+			}
+			#erweima{
+				width: 45px;
+				border-radius: 27px;
+				text-align: right;
+				margin: 0px;
+				margin-left: 0px;
+				margin-top: 20px;
+			}
+			#username{
+				font-size: 20px;
+				margin-top: 20px;
+			}
+			#school{
+				font-size: 15px;
+				margin-top: 6px;
+			}
+			.name{
+				width: 100%;
+				height: auto;
+				background-color: #f9f9f9;
+				color: #6f6f6f;
+			}
+			.name p{
+				font-size: 14px;
+				line-height: 25px;
+				margin-left: 15px;
+			}
+			#info div div{
+				float: left;
+			}
+			.xiangmu{
+				width: 95%;
+			}
+			.xiangmu p{
+				font-size: 15px;
+			}
+			.t{
+				line-height: 60px;
+				background-color: #fff;
+				height: 60px;
+				padding-left: 15px;
+			}
+			.t div{
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header" >
+			<div><img id="touxiang" src="../img/touxiang.jpg"/></div>
+			<div style="width: 60%;" ><p id="username">用户名</p><p id="school">学校</p></div>
+			<div style="margin-right: 0px;" ><img id="erweima" src="../img/erweima.png"/></div>
+		</div>
+		<div id="info" >
+			<div class="name" >
+				<p>大学圈</p>
+			</div>
+			<div class="t" >
+				<!-- onclick="top.location.href='mainhome.html';" -->
+				<div class="xiangmu"><p>个人主页</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>大学圈记录</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>互动消息</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>头饰商城</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>话题管理</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>问答管理</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>活动管理</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="name" >
+				<p>校园号</p>
+			</div>
+			<div class="t" >
+				<div class="xiangmu"><p>校园号管理</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="name" >
+				<p>设置反馈</p>
+			</div>
+			<div class="t" onclick="gotoabout()">
+				<div class="xiangmu"><p>帮助反馈</p></div>
+				<div class="back"></div>
+			</div>
+			<div class="t" onclick="setting()">
+				<div class="xiangmu"><p>设置</p></div>
+				<div class="back"></div>
+			</div>
+		</div>
+		<script>
+			document.getElementById("username").innerHTML = localStorage.getItem("username");
+			document.getElementById("school").innerHTML = localStorage.getItem("school");
+			function setting(){
+				top.location.href = "setting.html";
+			}
+			document.getElementById("erweima");
+			erweima.onclick = function(){
+				alert("点击了二维码")
+			}
+			function gotoabout(){
+				top.location.href = "about.html";
+			}
+		</script>
+	</body>
+</html>

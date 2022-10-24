@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>请假申请</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#header{
+				height: 50px;
+				width: 100%;
+				padding-top: 25px;
+				background-color: #fff;
+				position: fixed;
+				top: 0px;
+				border-bottom: 1px solid #6f6f6f;
+			}
+			#back{
+				width: 14px;
+				height: 14px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 2px solid #000;
+				border-right: 2px solid #000;
+				transform:rotate(-135deg);
+				margin: 15px 20px;
+			}
+			#main{
+				padding-top: 76px;
+			}
+			hr{
+				height: 10px;
+				border: none;
+				background-color: #f6f6f6;
+			}
+			#tip{
+				width: 100%;
+			}
+			.maintb{
+				padding-left: 15px;
+				padding-right: 15px;
+				width: 100%;
+			}
+			.maintb tr{
+				height: 40px;
+			}
+			.maintb tr td input{
+				border: 0px;
+				outline: 0px;
+				font-size: 18px;
+			}
+			#wheres{
+				height: 60px;
+			}
+			#because{
+				height: 60px;
+			}
+			#btn{
+				width: 100%;
+				height: 45px;
+				bottom: 0px;
+				background-color: #3399fe;
+			}
+			#btn p{
+				text-align: center;
+				line-height: 45px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;">我要请假</p></td>
+					<td style="width: 15%;"><p style="color: #f00;text-align: center;">反馈</p></td>
+				</tr>
+			</table>
+		</div>
+		<div id="main">
+			<img id="tip" src="../img/tip1.png"/>
+			<table class="maintb">
+				<tr>
+					<td style="width: 35%;">请假类型</td>
+					<td><input id="qjtype" type="text" value="" placeholder="选填:病假/事假"/></td>
+				</tr>
+				<tr>
+					<td>开始时间</td>
+					<td><input type="date" id="bgdate" value=""/><input style="width: 50px;" id="bgtime" type="text" value=""/></td>
+				</tr>
+				<tr>
+					<td>结束时间</td>
+					<td><input type="date" id="enddate" value=""/><input style="width: 50px;" id="endtime" type="text" value="22:00"/></td>
+				</tr>
+				<tr>
+					<td>需要离校</td>
+					<td><p>是</p></td>
+				</tr>
+				<tr>
+					<td>手机号</td>
+					<td><input id="tel" type="text" onblur="setmemory('tel',this)" value="" placeholder="电话号码"/></td>
+				</tr>
+			</table>
+			<hr>
+			<table class="maintb">
+				<tr>
+					<td>目的地</td>
+					<td rowspan="2"><input id="where" type="textarea" value="" placeholder="省市区开始，精确到街道门牌"/></td>
+				</tr>
+				<tr style="height: 60px;">
+					<td></td>
+				</tr>
+				<tr>
+					<td>附件图片</td>
+					<td><input id="fujian" type="text" value="" placeholder="此处粘贴附件图床链接"/></td>
+				</tr>
+			</table>
+			<hr>
+			<table class="maintb">
+				<tr>
+					<td style="width: 30%;">请假原因</td>
+					<td rowspan="2"><input id="because" type="textarea" onblur="setmemory('because',this)" value="" placeholder="(不少于十个字)"/></td>
+				</tr>
+				<tr style="height: 60px;">
+					<td></td>
+				</tr>
+				<tr>
+					<td>定位</td>
+					<td><input type="text" id="place" onblur="setmemory('place',this)" value="" placeholder="学校在地图上的位置"/></td>
+				</tr>
+				<tr>
+					<td>一级审核</td>
+					<td><input id="g1" type="text" onblur="setmemory('g1',this)" value="" placeholder="填写姓名"/></td>
+				</tr>
+				<tr>
+					<td>一级职务</td>
+					<td><input id="g1_p" type="text" onblur="setmemory('g1_p',this)" value="" placeholder="填写职务"/></td>
+				</tr>
+				<tr>
+					<td>二级审核</td>
+					<td><input id="g2" type="text" onblur="setmemory('g2',this)" value="" placeholder="例:张三"/></td>
+				</tr>
+				<tr>
+					<td>二级职务</td>
+					<td><input id="g2_p" type="text" onblur="setmemory('g2_p',this)" value="" placeholder="例:[角色/组织]辅导员"/></td>
+				</tr>
+				<tr>
+					<td>三级审核</td>
+					<td><input id="g3" type="text" onblur="setmemory('g3',this)" value="" placeholder="需要多少填多少"/></td>
+				</tr>
+				<tr>
+					<td>三级职务</td>
+					<td><input id="g3_p" type="text" onblur="setmemory('g3_p',this)" value="" placeholder="剩下的可以空下"/></td>
+				</tr>
+				<tr>
+					<td>四级审核</td>
+					<td><input id="g4" type="text" onblur="setmemory('g4',this)" value="" placeholder="必须按照格式填写"/></td>
+				</tr>
+				<tr>
+					<td>四级职务</td>
+					<td><input id="g4_p" type="text" onblur="setmemory('g4_p',this)" value="" placeholder="感谢使用,欢迎打赏"/></td>
+				</tr>
+			</table>
+			<p style="text-align: center;margin: 0px 10px;">
+				-----注意-----<br>
+				以上的定位(发起位置)、紧急联系人、审核人、请假原因一次填写，始终有效，之后将自动填充不必再次填写。
+				考虑到假条审核需要时间，默认最早请假开始时间为早上九点，尽量不要更改，否则请假发起时间会很离谱。
+			</p>
+			<div id="btn" onclick="addhistory()" ><p>提交请假</p></div>
+		</div>
+		<script>
+			window.onload = function(){
+				document.getElementById("tel").value = localStorage.getItem("tel");
+				document.getElementById("place").value = localStorage.getItem("place");
+				document.getElementById("because").value = localStorage.getItem("because");
+				document.getElementById("g1").value = localStorage.getItem("g1");
+				document.getElementById("g1_p").value = localStorage.getItem("g1_p");
+				document.getElementById("g2").value = localStorage.getItem("g2");
+				document.getElementById("g2_p").value = localStorage.getItem("g2_p");
+				document.getElementById("g3").value = localStorage.getItem("g3");
+				document.getElementById("g3_p").value = localStorage.getItem("g3_p");
+				document.getElementById("g4").value = localStorage.getItem("g4");
+				document.getElementById("g4_p").value = localStorage.getItem("g4_p");
+			}
+			function setmemory(name,e){
+				localStorage.setItem(name,e.value);
+			}
+			function back(){
+				window.history.back();
+			}
+			var ntm = Date.now();
+			var time = new Date(ntm);
+			function dateFormat(fmt,date){
+				var o = {
+					"M+" : date.getMonth()+1,
+					"d+" : date.getDate(),
+					"h+" : date.getHours(),
+					"m+" : date.getMinutes(),
+					"s+" : date.getSeconds(),
+				};
+				if(/(y+)/.test(fmt)){
+					fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+				}
+				for(var k in o)
+					if(new RegExp("("+ k +")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+				return fmt;
+			}
+			var tempbgtime = dateFormat("hh:mm",time);
+			var a = tempbgtime.substring(0,2);
+			if(a<12){
+				a = "09";
+				document.getElementById("bgtime").value = a+":00";
+			}else if(12<=a && a<18){
+				a = "12";
+				document.getElementById("bgtime").value = a+":00";
+			}else{
+				a = "18";
+				document.getElementById("bgtime").value = a+":00";
+			}
+			
+			function addhistory(){
+				var temp_qjtype = document.getElementById("qjtype");
+				var temp_bgdate = document.getElementById("bgdate");
+				var temp_bgtime = document.getElementById("bgtime");
+				var temp_enddate = document.getElementById("enddate");
+				var temp_endtime = document.getElementById("endtime");
+				var temp_where = document.getElementById("where");
+				var temp_fujian = document.getElementById("fujian");
+				
+				var temp = {
+					qjtype:temp_qjtype.value,
+					bgdate:temp_bgdate.value,
+					bgtime:temp_bgtime.value,
+					enddate:temp_enddate.value,
+					endtime:temp_endtime.value,
+					where:temp_where.value,
+					fujian:temp_fujian.value,
+				}
+				var time = new Date().getTime();
+				localStorage['_fk'+time] = JSON.stringify(temp);
+				
+				var timelist = JSON.parse(localStorage.getItem('timesheet'));
+				timelist.unshift(time);
+				localStorage.setItem('timesheet',JSON.stringify(timelist));
+				console.log(JSON.parse(localStorage.getItem('timesheet')));
+				console.log(time + ":" + localStorage['_fk'+time]);
+				
+				document.location.href = "history.html";
+			}
+			//下面的判断是必须的，当本地存储的数组为空时，无法插入数据，所以为空时需要
+			//写入任意数据来初始化数组
+			if(JSON.parse(localStorage.getItem('timesheet')) == null){
+				var timelist = ['test'];
+				localStorage.setItem('timesheet',JSON.stringify(timelist));
+			}
+		</script>
+	</body>
+</html>

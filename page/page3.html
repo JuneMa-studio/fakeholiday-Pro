@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>服务</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#t1{
+				width: 100%;
+				height: 75px;
+				padding-top: 25px;
+				position: fixed;
+				top: 0px;
+			}
+			#t1 tr td{
+				width: 33.3%;
+				text-align: center;
+				line-height: 40px;
+			}
+			#t2{
+				width: 100%;
+				margin-top: 70px;
+				text-align: center;
+			}
+			#t2 tr td{
+				width: 25%;
+				font-size: 12px;
+			}
+			#t2 tr td img{
+				width: 58%;
+				margin-top: 20px;
+			}
+			.r{
+				background-color: #f6f6f6;
+				color: #a5a5a5;
+				border-radius: 13px;
+				line-height: 26px;
+				margin: 10px 7px;
+			}
+			#r1{
+				color: #fff;
+				background-color: #404040;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<table id="t1">
+				<tr>
+					<td></td>
+					<td style="font-size: 17px;">应用中心</td>
+					<td style="text-align: right;">
+						<img src="../img/fangdajing1.png" style="height: 15px;margin-top: 10px;margin-right: 15px;"/></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table id="t2">
+				<tr>
+					<td style="font-size: 17px;line-height: 35px"><strong>应用分类</strong></td>
+					<td></td>
+					<td></td>
+					<td style="text-align: right;padding-right: 10px;">
+						<img src="../img/menu.png" style="height: 20px;width: auto;margin-top: 0px;"/></td>
+				</tr>
+				<tr>
+					<td><p class="r" id="r1" >我的服务</p></td>
+					<td><p class="r" id="r2">校内服务</p></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td style="font-size: 17px;line-height: 35px"><strong>我的服务</strong></td>
+					<td></td>
+					<td></td>
+					<td style="text-align: right;padding-right: 10px;">编辑</td>
+				</tr>
+				<tr>
+					<td onclick="gotohistory()"><img src="../img/qingjia.png"/></td>
+					<td><img src="../img/qiandao.png"/></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td onclick="gotohistory()">请假</td>
+					<td>签到</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td style="font-size: 17px;line-height: 35px"><strong>校内服务</strong></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><img src="../img/chasu.png"/></td>
+					<td><img src="../img/tongzhi.png"/></td>
+					<td><img src="../img/gerenxinxi.png" onclick="getstuinfo()"/></td>
+					<td><img src="../img/huodong.png"/></td>
+				</tr>
+				<tr>
+					<td>查寝</td>
+					<td>辅导员通知</td>
+					<td onclick="getstuinfo()">个人信息</td>
+					<td>活动报名</td>
+				</tr>
+				<tr>
+					<td><img src="../img/qiandao.png"/></td>
+					<td onclick="gotohistory()"><img src="../img/qingjia.png"/></td>
+					<td><img src="../img/suguan.png"/></td>
+					<td><img src="../img/wodexinxi.png"/></td>
+				</tr>
+				<tr>
+					<td>签到</td>
+					<td onclick="gotohistory()">请假</td>
+					<td>宿管查寝</td>
+					<td>我的信息</td>
+				</tr>
+				<tr>
+					<td><img src="../img/xinxishouji.png"/></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>信息收集</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			var r1 = document.getElementById("r1");
+			var r2 = document.getElementById("r2");
+			r1.onclick = function(){
+				r1.style.backgroundColor = "#404040";
+				r1.style.color = "#fff";
+				r2.style.backgroundColor = "#f6f6f6";
+				r2.style.color = "#a5a5a5";
+			}
+			r2.onclick = function(){
+				r2.style.backgroundColor = "#404040";
+				r2.style.color = "#fff";
+				r1.style.backgroundColor = "#f6f6f6";
+				r1.style.color = "#a5a5a5";
+			}
+			function gotohistory(){
+				top.location.href = "../page/history.html"
+			}
+			function getstuinfo(){
+				top.location.href = "../page/studentinfo.html"
+			}
+		</script>
+	</body>
+</html>

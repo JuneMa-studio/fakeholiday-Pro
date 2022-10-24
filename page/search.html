@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>搜索</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#search{
+				margin-top: 60px;
+				margin-left: 15px;
+				margin-right: 15px;
+				height: 35px;
+				background-color: #fff;
+				border: 1px solid #000;
+				border-radius: 8px;
+				color: #a1a1a1;
+			}
+			#search table{
+				width: 100%;
+			}
+			#pic{
+				height: 20px;
+				margin: 4px 7px;
+			}
+			#ipt{
+				width: 100%;
+				height: 25px;
+				margin: 0px 0px;
+				border: none;
+				outline：none;
+				outline-color: rgba(255,255,255,0%);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="search">
+			<table>
+				<tr>
+					<td style="width: 10%;"><img id="pic" src="../img/serch.png"/></td>
+					<td style="width: 70%;"><input id="ipt" type="text" value=""/></td>
+					<td id="do" style="width: 15%;text-align: center;">搜索</td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			var a = document.getElementById("do"); 
+			a.onclick = function(){
+				var str = document.getElementById("ipt").value;
+				var res = encodeURI(str);
+				window.location.href = "https://cn.bing.com/search?q="+res;
+			}
+		</script>
+	</body>
+</html>

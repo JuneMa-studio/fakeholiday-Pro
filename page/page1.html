@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				font-size: 18px;
+				font-family: 黑体;
+			}
+			html, body{
+				background-color: #3250e4;
+				width: 100%;
+			}
+			#header{
+				height: 60px;
+				width: 100%;
+				background-color: #3250e4;
+				padding-top: 30px;
+				position: fixed;
+				top: 0px;
+			}
+			#header div{
+				float: left;
+				height: 35px;
+				padding-top: 25px;
+				color: #fff;
+			}
+			#school{
+				width: 85%;
+				padding-left: 15px;
+				font-size: 20px;
+			}
+			#qr{
+				text-align: right;
+			}
+			#qr img{
+				height: 55%
+			}
+			#area1{
+				margin-top: 100px;
+			}
+			#serch{
+				margin: 15px 15px;
+				height: 35px;
+				background-color: #fff;
+				border-radius: 8px;
+				color: #a1a1a1;
+			}
+			#serch div{
+				height: 100%;
+				float: left;
+				font-size: 12px;
+				line-height: 35px;
+				margin-left: 10px;
+			}
+			#serch div img{
+				height: 40%;
+				margin-left: 5px;
+				margin-top: 10px;
+			}
+			#menut{
+				height: 100px;
+				margin: 10px 0px;
+				color: #fff;
+			}
+			#menut table{
+				width: 100%;
+				text-align: center;
+			}
+			#menut table tr td{
+				width: 25%;
+				font-size: 12px;
+			}
+			#menut table tr td img{
+				width: 55%;
+			}
+			#richeng{
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+				border-radius: 15px 15px 0 0;
+				margin-top: -20px;
+			}
+			#richeng img{
+				width: 100%;
+			}
+			#rchead{
+				width: 100%;
+				height: auto;
+				padding-top: 15px;
+				/* padding: 15px 15px; */
+			}
+			#rchead div{
+				float: left;
+				margin-left: 15px;
+				width: 43%;
+				font-size: 16px;
+				color: #929292;
+			}
+			#picturearea{
+				padding: 15px 15px;
+			}
+			#picturearea img{
+				width: 100%;
+			}
+			#t2{
+				width: 100%;
+				position: sticky;
+				top: 90px;
+			}
+			#t2 img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<div id="school" ></div>
+			<div id="qr"><img src="../img/qr.png"/></div>
+		</div>
+		<div id="mainarea">
+			<div id="area1">
+				<div id="serch" onclick="gotosearch()">
+					<div>
+						<img src="../img/serch.png"/>
+					</div>
+					<div>
+						搜索
+					</div>
+				</div>
+				<div id="menut" >
+					<table>
+						<tr>
+							<td onclick="gotohistory()"><img src="../img/goout.png"/></td>
+							<td onclick="gotoqiandao()"><img src="../img/mark.png"/></td>
+							<td><img src="../img/flag.png"/></td>
+							<td onclick="jumpto3()"><img src="../img/more.png"/></td>
+						</tr>
+						<tr>
+							<td onclick="gotohistory()">请假</td>
+							<td onclick="gotoqiandao()">签到</td>
+							<td>问答广场</td>
+							<td onclick="jumpto3()">服务中心</td>
+						</tr>
+					</table>
+				</div>
+				<div id="richeng">
+					<div id="rchead">
+						<div>日程</div>
+						<div style="text-align: right;font-size: 12px;" >更多 ></div>
+					</div>
+					<div style="width: 100%;">
+						<img style="width: 100%;" src="../img/rcbody1.png"/>
+					</div>
+					<div id="picturearea" >
+						<img src="../img/picture.jpg" />
+					</div>
+					<div id="t2" ><img src="../img/today.png"/></div>
+					<img src="../img/i1.png"/>
+					<img src="../img/i2.png"/>
+					<img src="../img/i3.png"/>
+					<img src="../img/i4.png"/>
+					<img src="../img/i5.png"/>
+					<img src="../img/i6.png"/>
+					<img src="../img/i7.png"/>
+					<img src="../img/i8.png"/>
+					<img src="../img/i9.png"/>
+					<img src="../img/i10.png"/>
+					<img src="../img/i11.png"/>
+					<img src="../img/i12.png"/>
+					<img src="../img/i13.png"/>
+					<img src="../img/i14.png"/>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.getElementById("school").innerHTML = localStorage.getItem("school");
+			function gotohistory(){
+				top.location.href = "../page/history.html"
+			}
+			function jumpto3(){
+				top.location.href = "../main.html?p=3";
+			}
+			function gotosearch(){
+				top.location.href = "../page/search.html";
+			}
+			function gotoqiandao(){
+				top.location.href = "../page/qiandao.html"
+			}
+		</script>
+	</body>
+</html>

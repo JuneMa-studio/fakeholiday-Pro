@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>校园</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#header{
+				width: 100%;
+				height: 50px;
+				background-color: #fff;
+				padding-left: 42%;
+				padding-top: 25px;
+				line-height: 50px;
+				position: fixed;
+			}
+			#header div{
+				float: left;
+			}
+			#bt{
+				background-color: rgba(0, 0, 0, 0%);
+				border: #fff;
+				outline：none;
+				outline-color: rgba(255,255,255,0%);
+			}
+			#bt img{
+				height: 4px;
+				margin-left: 5px;
+				margin-bottom: 3px;
+				transform: rotate(180deg);
+			}
+			#area{
+				background-color: rgba(246, 246, 246, 50%);
+				width: 100%;
+				height: 100%;
+				display: none;
+				position: fixed;
+				top: 75px;
+			}
+			#menu{
+				width: 100%;
+				height: 60px;
+				background-color: #fff;
+			}
+			#menu div{
+				float: left;
+				width: 75px;
+				height: 25px;
+				margin: 5px 10px;
+				font-size: 12px;
+				background-color: #f6f6f6;
+			}
+			#menu div p{
+				text-align: center;
+				line-height: 25px;
+			}
+			#t{
+				width: 100%;
+				padding-top: 75px;
+			}
+			#t table{
+				width: 100%;
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+			#t table tr td{
+				width: 50%;
+				height: 35px;
+				padding: 5px 5px;
+			}
+			#t table tr td div{
+				background-color: #f6f6f6;
+				height: 35px;
+				border-radius: 5px;
+				line-height: 35px;
+				padding-left: 20px;
+			}
+			#t table tr td div p{
+				font-size: 14px;
+			}
+			#plus{
+				width: 45px;
+				height: 45px;
+				text-align: center;
+				line-height: 45px;
+				font-weight: 100;
+				color: #fff;
+				font-size: 35px;
+				background-color: #000;
+				position: fixed;
+				bottom: 80px;
+				right: 30px;
+				border-radius: 50%;
+			}
+			#back{
+				position: absolute;
+				width: 6px;
+				height: 6px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 1px solid #000;
+				border-right: 1px solid #000;
+				transform:rotate(45deg);
+				margin: 15px 10px;
+			}
+			#picture{
+				width: 100%;
+				display: block;
+			}
+			#picture img{
+				width: 100%;
+			}
+			#picture2{
+				display: none;
+			}
+			#picture2 img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+			<div id="header">
+				<div style="font-size: 17px;">大学圈</div>
+				<div><button id="bt"><img id="btimg" src="../img/menu-push.png"/></button></div>
+			</div>
+			<div id="plus">+</div>
+			<div id="area">
+				<div id="menu">
+					<p style="margin-left: 10px;">只看类型</p>
+					<div id="benxiao" style="background-color: #000;color: #fff;"><p>本校</p></div>
+					<div id="guanzhu"><p>关注</p></div>
+				</div>
+			</div>
+			<div id="t" >
+				<table>
+					<tr>
+						<td><div><p># 日常的镜头</p></div></td>
+						<td><div><p># 心情草稿箱</p></div></td>
+					</tr>
+					<tr>
+						<td><div><p># 夏日歌单</p></div></td>
+						<td><div><p># 阅读备忘录</p></div></td>
+					</tr>
+					<tr>
+						<td><div><p># 八月读书打卡</p></div></td>
+						<td><div><p># 我要上推荐</p></div></td>
+					</tr>
+					<tr>
+						<td><div><p># 今天你学习了吗</p></div></td>
+						<td><div><p>更多话题<span id="back"></span></p></div></td>
+					</tr>
+				</table>
+			</div>
+			<div id="picture" >
+				<img src="../img/4p1.png"/>
+				<img src="../img/4p2.png"/>
+				<img src="../img/4p3.png"/>
+				<img src="../img/4p4.png"/>
+				<img src="../img/4p5.png"/>
+				<img src="../img/4p6.png"/>
+				<img src="../img/4p7.png"/>
+				<img src="../img/4p8.png"/>
+				<img src="../img/4p9.png"/>
+				<img src="../img/4p10.png"/>
+				<img src="../img/4p11.png"/>
+				<img src="../img/4p12.png"/>
+			</div>
+			<div id="picture2">
+				<img src="../img/noinfo.jpg"/>
+			</div>
+			<script>
+				var bt = document.getElementById("bt");
+				var btimg = document.getElementById("btimg");
+				var area = document.getElementById("area");
+				bt.onclick = function(){
+					if(btimg.style.transform = "rotate(180deg)"){
+						area.style.display = "block";
+						btimg.style.transform = "rotate(0deg)";
+					}
+				};
+				area.onclick = function(){
+					area.style.display = "none";
+					btimg.style.transform = "rotate(180deg)";
+				}
+				var bx = document.getElementById("benxiao");
+				var gz = document.getElementById("guanzhu");
+				var picture = document.getElementById("picture");
+				var picture2 = document.getElementById("picture2");
+				bx.onclick = function(){
+					bx.style.backgroundColor = "#000";
+					bx.style.color = "#fff";
+					gz.style.backgroundColor = "#f6f6f6";
+					gz.style.color = "#000";
+					picture.style.display = "block";
+					picture2.style.display = "none";
+				}
+				gz.onclick = function(){
+					gz.style.backgroundColor = "#000";
+					gz.style.color = "#fff";
+					bx.style.backgroundColor = "#f6f6f6";
+					bx.style.color = "#000";
+					picture.style.display = "none";
+					picture2.style.display = "block";
+				}
+			</script>
+	</body>
+</html>

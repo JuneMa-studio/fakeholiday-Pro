@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 设置全局宽度为设备宽度，初始缩放一倍，最大缩放一倍，禁止用户缩放 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>June.Ma 假日校园</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			body{
+				background-color: #fff;
+				background-size: 100% 100%;
+			}
+			img{
+				position: fixed;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/welcome.jpg" width="100%" height="100%"/>
+		<script>
+			setTimeout(function(){
+				if (localStorage.getItem("school") == null) {
+					location.href="page/userinfo.html";
+				}else{
+					location.href ="main.html";
+				}
+			},2300);
+		</script>
+	</body>
+</html>

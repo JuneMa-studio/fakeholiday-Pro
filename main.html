@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>main_page</title>
+		<script src="jq/jquery.js"></script>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			html, body{
+				height: 100%;
+				width: 100%;
+			}
+			#menu{
+				width: 100%;
+				height: 50px;
+				position: fixed;
+				list-style: none;
+				bottom: 0px;
+				background-color: #fff;
+			}
+			.m{
+				width: 20%;
+				height: 100%;
+				float: left;
+				text-align: center;
+				/* background-color: aqua; */
+			}
+			.m p{
+				line-height: 50px;
+				color: #a6a6a6;
+				font-size: 16px;
+			}
+			#mainarea{
+				width: 100%;
+				height: 95%;
+			}
+			#frame{
+				width: 100%;
+				height: 100%;
+				border: medium none;
+			}
+			#msg{
+			    height: 20px;
+			    text-align: center;
+				font-size: 16px;
+			    position: fixed;
+			    top: 80%;
+			    width: 100%;
+			}
+			#msg span{
+			    color: #fff;
+			    background: #6a6a6a;
+			    height: 50px;
+			    display: inline-block;
+			    padding: 0 3rem;
+			    border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="menu">
+			<li class="m"><p id="p1" style="color: #000;" >今日</p></li>
+			<li class="m"><p id="p2">讯息</p></li>
+			<li class="m"><p id="p3">服务</p></li>
+			<li class="m"><p id="p4">校园</p></li>
+			<li class="m"><p id="p5">我的</p></li>
+		</ul>
+		<div id="mainarea" >
+			<iframe id="frame" src="page/page1.html"></iframe>
+		</div>
+		<script>
+			if (localStorage.getItem("school") == null) {
+				alert("基本信息请到我的-设置-个人资料重新填写/修改")
+			};
+			var p1 = document.getElementById("p1");
+			var p2 = document.getElementById("p2");
+			var p3 = document.getElementById("p3");
+			var p4 = document.getElementById("p4");
+			var p5 = document.getElementById("p5");
+			var fsrc = document.getElementById("frame");
+			p1.onclick = function on1(){
+				p1.style.color = "#000";
+				p2.style.color = "#a6a6a6";
+				p3.style.color = "#a6a6a6";
+				p4.style.color = "#a6a6a6";
+				p5.style.color = "#a6a6a6";
+				fsrc.src = "page/page1.html"
+			};
+			p2.onclick = function on2(){
+				p1.style.color = "#a6a6a6";
+				p2.style.color = "#000";
+				p3.style.color = "#a6a6a6";
+				p4.style.color = "#a6a6a6";
+				p5.style.color = "#a6a6a6";
+				fsrc.src = "page/page2.html"
+			};
+			p3.onclick = function on3(){
+				p1.style.color = "#a6a6a6";
+				p2.style.color = "#a6a6a6";
+				p3.style.color = "#000";
+				p4.style.color = "#a6a6a6";
+				p5.style.color = "#a6a6a6";
+				fsrc.src = "page/page3.html"
+			};
+			p4.onclick = function on4(){
+				p1.style.color = "#a6a6a6";
+				p2.style.color = "#a6a6a6";
+				p3.style.color = "#a6a6a6";
+				p4.style.color = "#000";
+				p5.style.color = "#a6a6a6";
+				fsrc.src = "page/page4.html"
+			};
+			p5.onclick = function on5(){
+				p1.style.color = "#a6a6a6";
+				p2.style.color = "#a6a6a6";
+				p3.style.color = "#a6a6a6";
+				p4.style.color = "#a6a6a6";
+				p5.style.color = "#000";
+				fsrc.src = "page/page5.html"
+			};
+			
+			function getvalue(name){
+				const url_string = window.location.href;
+				const url = new URL(url_string);
+				return url.searchParams.get(name);
+			};
+			var p = getvalue("p");
+			if(p==3){
+				p1.style.color = "#a6a6a6";
+				p2.style.color = "#a6a6a6";
+				p3.style.color = "#000";
+				p4.style.color = "#a6a6a6";
+				p5.style.color = "#a6a6a6";
+				fsrc.src = "page/page3.html"
+			};
+			function alert(e){
+				     $("body").append("<div id='msg'><span>"+e+"</span></div>");
+				     clearmsg();
+				 }
+				 function clearmsg(){
+				     var t = setTimeout(function(){
+				         $("#msg").remove();
+				     },4000)
+				 };
+		</script>
+	</body>
+</html>

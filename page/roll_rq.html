@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#rollbox{
+				width: 100%;
+			}
+			@keyframes scrollToUp {
+				0% {
+					background-position: 0 0;
+				}
+				100% {
+					background-position: -371% 0;
+				}
+			}
+			#imgBgc{
+				height: 100px;
+				width: 100%;
+				background-image: url(../img/动态防伪.png);
+				background-repeat: repeat-x;
+				background-size: 130% 100px;
+				background-attachment: fixed;
+				background-position: center center;
+				padding-top: 0px;
+				animation: scrollToUp 7s linear infinite;
+			}
+			#imgBgc div p{
+				text-align: center;
+			}
+			#sptgimg{
+				height: 28px;
+				margin: 0px 5px;
+			}
+			#spytg{
+				height: 30px;
+				line-height: 30px;
+				color: #fff;
+				font-size: 20px;
+				letter-spacing: 2px;
+			}
+			#zzxjz{
+				color: #fff;
+				font-size: 35px;
+				letter-spacing: 4px;
+			}
+			#myinfo{
+				position: fixed;
+				top: 8px;
+				right: 15px;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="rollbox">
+			<div id="imgBgc">
+				<div id="spytg"><p><img src="../img/duigou.png" id="sptgimg" />审批已通过</p></div>
+				<div id="zzxjz"><p id="p">正在休假中</p></div>
+			</div>
+		</div>
+		<script>
+			function getvalue(name){
+				const url_string = window.location.href;
+				const url = new URL(url_string);
+				return url.searchParams.get(name);
+			}
+			var flag = getvalue("flag");
+			if(flag == 1){
+				document.getElementById("imgBgc").style.backgroundImage = "url(../img/rollpic.png)";
+				document.getElementById("p").innerHTML = "正在休假中";
+			}else{
+				document.getElementById("imgBgc").style.backgroundImage = "url(../img/rollpic_ed.png)";
+				document.getElementById("p").innerHTML = "已完成";
+			}
+		</script>
+	</body>
+</html>

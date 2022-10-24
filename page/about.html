@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>关于和帮助</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#header{
+				height: 50px;
+				width: 100%;
+				padding-top: 25px;
+				background-color: #fff;
+				position: fixed;
+				top: 0px;
+				border-bottom: 1px solid #6f6f6f;
+			}
+			#back{
+				width: 14px;
+				height: 14px;
+				background-color: rgba(255, 255, 255, 0%);
+				border-top: 2px solid #000;
+				border-right: 2px solid #000;
+				transform:rotate(-135deg);
+				margin: 15px 20px;
+			}
+			#main{
+				padding-top: 85px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			h3{
+				padding-left: 15px;
+			}
+			#main p{
+				padding-left: 30px;
+			}
+			strong{
+				color: #f00;
+			}
+			img{
+				width: 100%;
+			}
+			#fileinput{
+				width: 100%;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 15%;"><div id="back" onclick="back()"></div></td>
+					<td style="width: 70%;"><p style="font-size: 20px;text-align: center;">关于和帮助</p></td>
+					<td style="width: 15%;"><p style="color: #f00;text-align: center;">反馈</p></td>
+				</tr>
+			</table>
+		</div>
+		<div id="main">
+			<h2>常见问题和解决办法：</h3>
+			<h3>Q:不知道审批人处应该填谁的名字？</h3>
+			<p><strong>解决办法：</strong>打开今日校园app-->点击服务-->我的信息-->学生基本信息-->管理老师，在这个页面你可以看到所有的与自己有关的管理老师，请根据情况，看清楚任职级别再填写
+			，填写顺序为从低到高，班级->院级->校级。</p>
+			<h3>Q:界面元素漂移或缩放不正常</h3>
+			<p><strong>解决办法：</strong>尝试打开手机开发者选项，操作步骤：我的手机/关于本机-->系统版本(点击3到10次)，然后退回设置主页面，选择辅助功能，选择开发者选项，在开发者
+			选项中，找到最小宽度，调整最小宽度并观察界面元素是否正常，非2k屏幕推荐的最小宽度为360dp到380dp之间，确实有明显瑕疵的，请联系我，我会在以后的更新中将它修复。</p>
+			<h3>Q:首次使用就遭遇数据无法存入的问题</h3>
+			<p><strong>解决办法：</strong>尝试检查系统更新，确保使用的系统和服务都是更新的版本，若已是最新，请尝试更新安卓系统webview，此应用为系统应用，更新需要科学上网，然后前往
+			Google paly store进行更新。（真的碰上那也是牛，此现象仅会出现在超低版本的安卓设备上）</p>
+			<h3>Q:使用时发现数据可以存入但是格式不正确</h3>
+			<p><strong>解决办法：</strong>先点击清除数据或点击退出登录按钮，输入数据时请按照提示输入，另外，时间输入尽量选择整点（因为请假时长的算法我只精确到了小时），正常使用选择日期即可，
+			大可不必填写小时和分钟（请将他们交给算法），这是减轻我自己工作量的举措，也是保护各位手指的举措。[手动狗头]</p>
+			<h3>Q:软件是免费的吗</h3>
+			<p>如你所见，本软件完全免费，没有植入广告，且会一直保持这个状态，各位同学如果喜欢请扫扫文末二维码向我捐赠，不捐赠也没关系的，不影响软件的正常使用，
+			同时烦请想要以此牟利，别有用心的人注意下，我在软件中多处表明免费，请不要欺骗广大穷苦大学生。</p>
+			<br><br>
+			<h2>解决在普通版立下的flag</h2>
+			<p>因为使用了本地存储，且效果不错，所以我在开发时摒弃了识别码功能。</p>
+			<p>简化了审批流程填写过程，你只需要填写名字，有几层就填写几个(最高四个)，就可以完成假条的生成，这些信息会保存在本地，下次不必再次填写。</p>
+			<p>由于今日校园的院校定制性，各位使用的本校版本可能与我开发时参考的版本存在差异，比如服务界面和首页的精选图文标题，这些细微差异不在日后的更新范围内，
+			主要是没参考，开发时以我自己的今日校园为准。</p>
+			<p>各位有任何问题都可以添加我的微信告诉我，v：AGX520MJW，如果搜不到就请通过邮箱联系，majunwu12321@foxmail.com</p>
+			<br>
+			<p onclick="gotogit('Majunwu666')">获取更新？请关注我的GitHub仓库，新版本会不定期上传，<strong>点击访问</strong>。(打不开则需要科学上网)</p>
+			<p>地址：https://github.com/<br>Majunwu666/fakeholiday-Pro</p>
+			<br>
+			<p>>>>>>>>>>>鸣谢<<<<<<<<<<</p>
+			<p onclick="gotogit('MaXiaopingIT')">GitHub@MaXiaopingIT的MinewebBrowser开源项目，<strong>点击访问</strong>。(打不开则需要科学上网)</p>
+			<p>地址：https://github.com/<br>MaXiaopingIT/MinewebBrowser</p>
+			<br>
+			<p>内测用户@晨&nbsp;&nbsp;&nbsp;提供的解决思路</p>
+			<p>内测用户@安.&nbsp;&nbsp;&nbsp;的重要反馈和素材提供</p>
+			<p>好友@咔咔kk&nbsp;&nbsp;&nbsp;的素材提供</p>
+			<p>以及多位内测用户对内测版的捐赠</p>
+			<p>其他参与内测的用户以及所有为普通版捐赠的用户</p>
+			
+			<br>
+			<p>收款码献上！！</p>
+			<img src="../img/skm.png">
+			
+		</div>
+		<script>
+			function back(){
+				location.href = "../main.html"
+			}
+			function gotogit(name){
+				window.location.href = "https://github.com/"+name;
+			}
+		</script>
+	</body>
+</html>
